@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venezia Invisibile - Curiosità e Scorci</title>
+    <style>
+        /* BASE STYLE MINIMALISTA */
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            line-height: 1.6; 
+            max-width: 900px; 
+            margin: auto; 
+            padding: 40px 20px; 
+            color: #2c3e50; 
+            background-color: #f9f9f9;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .logo { font-weight: bold; letter-spacing: 3px; text-transform: uppercase; font-size: 1.2em; }
+
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #666; font-size: 0.85em; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #C0392B; }
+
+        /* HERO SECTION */
+        header { text-align: center; margin-bottom: 100px; }
+        header h1 { font-size: 3em; font-weight: 300; margin-bottom: 10px; }
+        header p { font-style: italic; color: #7f8c8d; }
+
+        /* GRID DELLE CURIOSITÀ (SEO FRIENDLY) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 2px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .card:hover { transform: translateY(-5px); border-color: #C0392B; }
+
+        .card h2 { font-size: 1.4em; margin-top: 0; color: #2c3e50; }
+        .card p { font-size: 0.95em; color: #666; margin-bottom: 20px; }
+        
+        .btn-link { 
+            text-decoration: none; 
+            color: #C0392B; 
+            font-weight: bold; 
+            font-size: 0.8em; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
+        /* LA TUA GUARDIA VENEZIANA (Elemento ricorrente) */
+        .guardia-home {
+            position: fixed;
+            bottom: -50px;
+            right: -150px;
+            width: 300px;
+            opacity: 0.2; /* Molto soft in Home Page */
+            z-index: -1;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2em; }
+            nav { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Venezia Invisibile</div>
+        <ul>
+            <li><a href="#">Segreti</a></li>
+            <li><a href="#">Scorci</a></li>
+            <li><a href="#">Info</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Oltre la superficie</h1>
+        <p>Storie rimosse, pietre consumate e angoli dimenticati della Serenissima.</p>
+    </header>
+
+    <main class="grid">
+        <article class="card">
+            <h2>A Little Scratching</h2>
+            <p>Perché una pietra delle Prigioni Nuove è così consumata? La storia delle guardie stanche e delle loro armature.</p>
+            <a href="index.html" class="btn-link">Leggi il segreto →</a>
+        </article>
+
+        <article class="card">
+            <h2>Titolo 1</h2>
+            <p>Descrizione breve della curiosità che andremo a inserire. Un'anteprima che attiri l'attenzione del lettore e di Google.</p>
+            <a href="#" class="btn-link">Esplora →</a>
+        </article>
+
+        <article class="card">
+            <h2>Titolo 2</h2>
+            <p>Un altro scorcio o una leggenda veneziana. La struttura a griglia permette di aggiungere infiniti contenuti.</p>
+            <a href="#" class="btn-link">Esplora →</a>
+        </article>
+    </main>
+
+    <img src="guardia_veneziana_matita.png" class="guardia-home" alt="Guardia Veneziana">
+
+</body>
+</html>
