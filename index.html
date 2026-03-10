@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venezia Invisibile - Curiosità e Scorci</title>
-    <meta name="description" content="Scopri i segreti e le curiosità meno note di Venezia. Storie di guardie, pietre consumate e angoli nascosti della Serenissima.">
+    <meta name="description" content="Scopri i segreti e le curiosità meno note di Venezia. Storie di guardie, pietre consumate e angoli nascosti.">
     <style>
-        /* BASE STYLE MINIMALISTA */
+        /* BASE STYLE */
         body { 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
             line-height: 1.6; 
@@ -29,7 +29,7 @@
             padding-bottom: 20px;
         }
 
-        .logo { font-weight: bold; letter-spacing: 3px; text-transform: uppercase; font-size: 1.2em; }
+        .logo { font-weight: bold; letter-spacing: 3px; text-transform: uppercase; font-size: 1.2em; color: #2c3e50; }
 
         nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
         nav a { text-decoration: none; color: #666; font-size: 0.85em; text-transform: uppercase; transition: 0.3s; }
@@ -37,8 +37,8 @@
 
         /* HERO SECTION */
         header { text-align: center; margin-bottom: 100px; }
-        header h1 { font-size: 3em; font-weight: 300; margin-bottom: 10px; }
-        header p { font-style: italic; color: #7f8c8d; }
+        header h1 { font-size: 3em; font-weight: 300; margin-bottom: 10px; color: #2c3e50; }
+        header p { font-style: italic; color: #7f8c8d; font-size: 1.1em; }
 
         /* GRID DELLE CURIOSITÀ */
         .grid {
@@ -50,41 +50,53 @@
         .card {
             background: white;
             padding: 30px;
-            border-radius: 2px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
             border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .card:hover { transform: translateY(-5px); border-color: #C0392B; }
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: #C0392B; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
 
-        .card h2 { font-size: 1.4em; margin-top: 0; color: #2c3e50; }
-        .card p { font-size: 0.95em; color: #666; margin-bottom: 20px; }
+        .card h2 { font-size: 1.4em; margin-top: 0; transition: 0.3s; }
+        .card:hover h2 { color: #C0392B; }
+        
+        .card p { font-size: 0.95em; color: #666; margin-bottom: 25px; }
         
         .btn-link { 
             text-decoration: none; 
             color: #C0392B; 
             font-weight: bold; 
-            font-size: 0.8em; 
+            font-size: 0.85em; 
             text-transform: uppercase; 
             letter-spacing: 1px;
+            display: inline-block;
         }
 
-        /* LA GUARDIA VENEZIANA - Percorso aggiornato a img/ */
+        /* LA GUARDIA VENEZIANA - BACKGROUND FIXED */
         .guardia-home {
             position: fixed;
-            bottom: -50px;
-            right: -150px;
-            width: 300px;
-            opacity: 0.15; 
+            bottom: -30px;
+            right: -100px;
+            width: 350px;
+            opacity: 0.2; /* Leggermente più visibile */
             z-index: -1;
             transform: rotate(15deg);
             pointer-events: none;
+            filter: grayscale(100%);
         }
 
         @media (max-width: 600px) {
-            header h1 { font-size: 2em; }
-            nav { flex-direction: column; gap: 20px; }
+            header h1 { font-size: 2.2em; }
+            nav { flex-direction: column; gap: 20px; text-align: center; }
+            .guardia-home { width: 200px; right: -50px; }
         }
     </style>
 </head>
@@ -105,26 +117,3 @@
     </header>
 
     <main class="grid">
-        <article class="card">
-            <h2>A Little Scratching</h2>
-            <p>Perché una pietra delle Prigioni Nuove è così consumata? La storia delle guardie stanche e delle loro armature.</p>
-            <a href="a-little-scratching.html" class="btn-link">Leggi il segreto →</a>
-        </article>
-
-        <article class="card">
-            <h2>Il Casinò degli Spiriti</h2>
-            <p>Un luogo di leggende e apparizioni avvolto nel silenzio della laguna nord. Prossimamente online.</p>
-            <a href="#" class="btn-link">Esplora →</a>
-        </article>
-
-        <article class="card">
-            <h2>Il Ponte del Chiodo</h2>
-            <p>L'ultimo testimone di un'antica Venezia senza parapetti. Una sfida alla gravità e alla storia.</p>
-            <a href="#" class="btn-link">Esplora →</a>
-        </article>
-    </main>
-
-    <img src="img/guardia_veneziana_matita.png" class="guardia-home" alt="Guardia Veneziana">
-
-</body>
-</html>
