@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Little Scratching - Venezia Segreta</title>
     <style>
-        /* Aggiungiamo overflow-x hidden per evitare barre di scorrimento causate dalla rotazione */
+        /* Overflow-x hidden evita che la rotazione crei barre di scorrimento laterali */
         body { 
             font-family: sans-serif; 
             line-height: 1.6; 
@@ -13,7 +13,7 @@
             margin: auto; 
             padding: 20px; 
             color: #333; 
-            position: relative; /* Indispensabile per il posizionamento absolute della guardia */
+            position: relative; /* Base per il posizionamento della guardia */
             overflow-x: hidden; 
         }
 
@@ -21,23 +21,25 @@
         h1 { color: #2c3e50; }
         .highlight { background: #fcf8e3; padding: 10px; border-left: 5px solid #faf2cc; }
 
-        /* NUOVO CSS INTEGRATO */
+        /* CSS INTEGRATO: Posizionamento in basso a destra */
         .guardia-veneziana {
             position: absolute; 
-            left: 80px;        /* Spostata a sinistra e leggermente fuori bordo */
-            width: 280px; 
+            bottom: 50px;       /* Distanza dal fondo della pagina */
+            right: -20px;       /* Esce leggermente dal bordo destro per dinamismo */
+            width: 250px; 
             opacity: 0.6; 
-            z-index: 1;         /* Ora è SOPRA il testo */
+            z-index: 1;         /* Sopra il testo/immagini */
             pointer-events: none;
             transform: rotate(25deg); 
-            /* Aggiungiamo una transizione fluida se dovessi cambiare posizione via codice */
             transition: all 0.5s ease;
         }
 
+        /* Adattamento per dispositivi mobili */
         @media (max-width: 600px) {
             .guardia-veneziana { 
-                width: 180px; 
-                left: -20px; /* Meno sporgente su mobile */
+                width: 150px; 
+                right: -10px; 
+                bottom: 20px;
                 opacity: 0.4; 
             }
         }
