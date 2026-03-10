@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venezia Invisibile - Curiosità e Scorci</title>
+    <meta name="description" content="Scopri i segreti e le curiosità meno note di Venezia. Storie di guardie, pietre consumate e angoli nascosti della Serenissima.">
     <style>
         /* BASE STYLE MINIMALISTA */
         body { 
@@ -39,7 +40,7 @@
         header h1 { font-size: 3em; font-weight: 300; margin-bottom: 10px; }
         header p { font-style: italic; color: #7f8c8d; }
 
-        /* GRID DELLE CURIOSITÀ (SEO FRIENDLY) */
+        /* GRID DELLE CURIOSITÀ */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -69,13 +70,13 @@
             letter-spacing: 1px;
         }
 
-        /* LA TUA GUARDIA VENEZIANA (Elemento ricorrente) */
+        /* LA GUARDIA VENEZIANA - Percorso aggiornato a img/ */
         .guardia-home {
             position: fixed;
             bottom: -50px;
             right: -150px;
             width: 300px;
-            opacity: 0.2; /* Molto soft in Home Page */
+            opacity: 0.15; 
             z-index: -1;
             transform: rotate(15deg);
             pointer-events: none;
@@ -92,9 +93,9 @@
     <nav>
         <div class="logo">Venezia Invisibile</div>
         <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="#">Segreti</a></li>
             <li><a href="#">Scorci</a></li>
-            <li><a href="#">Info</a></li>
         </ul>
     </nav>
 
@@ -107,23 +108,23 @@
         <article class="card">
             <h2>A Little Scratching</h2>
             <p>Perché una pietra delle Prigioni Nuove è così consumata? La storia delle guardie stanche e delle loro armature.</p>
-            <a href="index.html" class="btn-link">Leggi il segreto →</a>
+            <a href="a-little-scratching.html" class="btn-link">Leggi il segreto →</a>
         </article>
 
         <article class="card">
-            <h2>Titolo 1</h2>
-            <p>Descrizione breve della curiosità che andremo a inserire. Un'anteprima che attiri l'attenzione del lettore e di Google.</p>
+            <h2>Il Casinò degli Spiriti</h2>
+            <p>Un luogo di leggende e apparizioni avvolto nel silenzio della laguna nord. Prossimamente online.</p>
             <a href="#" class="btn-link">Esplora →</a>
         </article>
 
         <article class="card">
-            <h2>Titolo 2</h2>
-            <p>Un altro scorcio o una leggenda veneziana. La struttura a griglia permette di aggiungere infiniti contenuti.</p>
+            <h2>Il Ponte del Chiodo</h2>
+            <p>L'ultimo testimone di un'antica Venezia senza parapetti. Una sfida alla gravità e alla storia.</p>
             <a href="#" class="btn-link">Esplora →</a>
         </article>
     </main>
 
-    <img src="guardia_veneziana_matita.png" class="guardia-home" alt="Guardia Veneziana">
+    <img src="img/guardia_veneziana_matita.png" class="guardia-home" alt="Guardia Veneziana">
 
 </body>
 </html>
