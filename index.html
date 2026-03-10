@@ -9,6 +9,23 @@
         img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
         h1 { color: #2c3e50; }
         .highlight { background: #fcf8e3; padding: 10px; border-left: 5px solid #faf2cc; }
+
+        /* AGGIUNTO QUI */
+        .guardia-veneziana {
+            position: fixed;
+            bottom: 0;
+            right: 10px;
+            width: 300px; /* Ho aumentato leggermente per renderla visibile */
+            opacity: 0.5; /* Più trasparente per non disturbare la lettura */
+            z-index: -1;  /* Rimane dietro al testo */
+            pointer-events: none; /* Non blocca i click dell'utente */
+        }
+
+        /* Opzionale: nasconde la guardia su schermi molto piccoli (smartphone) 
+           per evitare che copra troppo testo */
+        @media (max-width: 600px) {
+            .guardia-veneziana { width: 150px; opacity: 0.3; }
+        }
     </style>
 </head>
 <body>
@@ -25,5 +42,8 @@
     <p>When the guards were on patrol, they had to wear very heavy armor. Often, they grew tired and leaned against the stone to rest.</p>
     
     <img src="A little scratching.JPG" alt="Dettaglio pietra usurata">
+
+    <img src="guardia_veneziana_matita.png" class="guardia-veneziana" alt="Guardia Veneziana Storica">
+
 </body>
 </html>
