@@ -1,48 +1,55 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stargate - Venezia Segreta</title>
+    <title>Stargate - Venezia Invisibile</title>
     <style>
+        /* BASE STYLE - Uniformato alla Home */
         body { 
-            font-family: sans-serif; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
             line-height: 1.6; 
             max-width: 800px; 
             margin: auto; 
-            padding: 20px; 
-            color: #333; 
-            position: relative; 
-            overflow-x: hidden; 
+            padding: 40px 20px; 
+            color: #2c3e50; 
+            background-color: #f9f9f9;
         }
 
-        /* NAVBAR */
+        /* NAVIGATION BAR */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
+            margin-bottom: 50px;
             border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
         }
-        nav a { text-decoration: none; color: #666; font-size: 0.9em; text-transform: uppercase; }
-        .logo { font-weight: bold; color: #2c3e50; }
+        .logo { font-weight: bold; letter-spacing: 3px; text-transform: uppercase; font-size: 1.1em; color: #2c3e50; text-decoration: none; }
+        nav a { text-decoration: none; color: #666; font-size: 0.85em; text-transform: uppercase; }
 
-        /* CONTENUTO */
-        h1 { color: #2c3e50; text-transform: uppercase; letter-spacing: 2px; }
-        img { width: 100%; border-radius: 8px; margin-bottom: 20px; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .highlight { background: #e8f4f8; padding: 15px; border-left: 5px solid #3498db; margin-bottom: 20px; border-radius: 4px; }
+        /* CONTENT */
+        h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 30px; }
         
-        .mystery-note { font-style: italic; color: #7f8c8d; margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 10px; }
+        .highlight { 
+            background: #f0f4f8; 
+            padding: 20px; 
+            border-left: 5px solid #2c3e50; 
+            margin: 30px 0;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+        }
 
-        /* BOTTONE */
+        img { width: 100%; border-radius: 4px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+        /* FOOTER BOTTONE */
         .footer-nav {
             text-align: center;
-            margin-top: 50px;
-            margin-bottom: 30px;
-            padding-top: 20px;
+            margin-top: 60px;
+            padding-top: 30px;
             border-top: 1px solid #eee;
         }
+
         .btn-back {
             display: inline-block;
             padding: 12px 25px;
@@ -51,40 +58,38 @@
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: 0.3s;
         }
-        .btn-back:hover { background-color: #3498db; }
+        .btn-back:hover { background-color: #C0392B; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">Venezia Segreta</a>
-        <div>
-            <a href="index.html">Home</a>
-        </div>
+        <a href="index.html" class="logo">Venezia Invisibile</a>
+        <a href="index.html">← Home</a>
     </nav>
 
     <article>
-        <h1>Stargate</h1> 
+        <h1>Stargate</h1>
         
-        <p>Over the centuries, in the narrow space of the portico of the Church of San Simeon Grando, inexplicable disappearances of people occurred. [cite: 2]</p>
-        
+        <p>Nel silenzio del porticato della Chiesa di San Simeon Grando, si cela uno dei misteri più inquietanti di Venezia. Per secoli, questo spazio angusto è stato teatro di sparizioni inspiegabili, storie di persone svanite nel nulla tra le ombre delle colonne[cite: 2].</p>
+
+        <img src="img/foto5.jpg" alt="Il portico di San Simeon Grando">
+
         <div class="highlight">
-            <p>In the portico, there is the shrine of San Ermolao, a white marble tombstone sculpted in 1382. [cite: 3] The saint is depicted standing, wrapped in a cloak, with hands open to reveal his palms. [cite: 3]</p>
+            <p>"Si dice che la lastra di marmo non sia solo un tributo al Santo, ma una soglia mobile tra la nostra realtà e l'ignoto"[cite: 5].</p>
         </div>
 
-        <p>A theory suggests that the bas-relief, whose shape resembles a door, hides a passage to other universes. [cite: 5]</p>
+        <p>Al centro del portico si trova l'arca di San Ermolao, una stele di marmo bianco scolpita nel 1382[cite: 3]. Il Santo vi è raffigurato in piedi, con le mani aperte e i palmi rivolti in avanti, quasi a voler accogliere — o avvertire — chi osa avvicinarsi[cite: 3].</p>
         
-        <p>The belief is that it is enough to place your fingertips on the saint’s fingers, make a wish to leave, and press gently. [cite: 6] The entire marble stele would sink into the wall, absorbing the human presence. [cite: 7]</p>
+        <p>La leggenda vuole che basti appoggiare le dita su quelle del Santo, esprimere il desiderio di partire e premere con dolcezza[cite: 6]. In quel momento, la pietra sprofonderebbe nel muro, assorbendo il viaggiatore prima di tornare alla sua posizione abituale[cite: 7].</p>
 
-        <div class="mystery-note">
-            <p>For it to work, however, the portal required a conductor of energy: a large wooden cross. [cite: 8] This cross was removed in the 1960s and has been missing ever since. [cite: 9]</p>
-        </div>
+        <p>Tuttavia, il portale sembra essere rimasto "spento" dagli anni '60. Per attivarsi, richiedeva infatti un conduttore di energia: una grande croce lignea posizionata sulla parete opposta, oggi misteriosamente scomparsa[cite: 8, 9].</p>
     </article>
 
     <div class="footer-nav">
-        <a href="index.html" class="btn-back">← Torna alla Home</a>
+        <a href="index.html" class="btn-back">Torna alla Home</a>
     </div>
 
 </body>
