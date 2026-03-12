@@ -14,7 +14,7 @@
             color: #333; 
             position: relative; 
             overflow-x: hidden; 
-            background-color: #fff; /* Ottimizza il rendering iniziale */
+            background-color: #fff;
         }
 
         /* STILE CONTENITORE BOTTONE */
@@ -38,19 +38,18 @@
         }
         .btn-back:hover { background-color: #C0392B; }
 
-        /* OTTIMIZZAZIONE IMMAGINI MOBILE */
+        /* IMMAGINI RIDOTTE AL 50% */
         img { 
-            width: 100%; 
-            height: auto; /* Mantiene le proporzioni corrette */
+            width: 50%; /* Grandezza dimezzata */
+            height: auto; 
             max-width: 100%;
             border-radius: 8px; 
-            margin-bottom: 20px; 
+            margin: 0 auto 20px auto; /* Centrate orizzontalmente */
             display: block;
-            /* Forza il browser a gestire meglio il ridimensionamento */
             image-rendering: -webkit-optimize-contrast; 
         }
 
-        h1 { color: #2c3e50; font-size: 1.8em; } /* Ridotto leggermente per mobile */
+        h1 { color: #2c3e50; font-size: 1.8em; }
         
         .highlight { 
             background: #fcf8e3; 
@@ -60,7 +59,7 @@
             font-size: 0.95em;
         }
 
-        /* MAPPA RESPONSIVE */
+        /* MAPPA */
         .map-container {
             margin: 30px 0;
             border-radius: 8px;
@@ -69,17 +68,28 @@
         }
         .map-container iframe {
             width: 100%;
-            height: 250px; /* Ridotto per non occupare tutto lo schermo mobile */
+            height: 250px;
             border: 0;
             display: block;
         }
+        .map-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: #f9f9f9;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+        }
 
-        /* DECORAZIONE FILIGRANA (Alleggerita per mobile) */
+        /* DECORAZIONE (Filigrana resta piccola) */
         .guardia-veneziana {
             position: absolute; 
             bottom: 450px;
             right: -20px;       
-            width: 200px; 
+            width: 150px; 
             opacity: 0.4; 
             z-index: -1;         
             pointer-events: none;
@@ -89,7 +99,8 @@
         @media (max-width: 600px) {
             body { padding: 15px; }
             h1 { font-size: 1.5em; }
-            .guardia-veneziana { width: 120px; opacity: 0.2; }
+            img { width: 80%; } /* Su mobile le teniamo un po' più grandi del 50% per leggibilità */
+            .guardia-veneziana { width: 100px; opacity: 0.2; }
         }
     </style>
 </head>
@@ -99,7 +110,7 @@
     
     <p>Over the centuries, in the narrow space of the portico of the Church of San Simeon Grando, inexplicable disappearances of people occurred.</p>
     
-    <img src="img/foto3.jpg" alt="Portico di San Simeon Grando" loading="lazy" width="800" height="500">
+    <img src="img/foto3.jpg" alt="Portico di San Simeon Grando" loading="lazy">
 
     <div class="highlight">
         <p>A theory suggests that the bas-relief, whose shape resembles a door, hides a passage to other universes.</p> 
@@ -107,13 +118,13 @@
 
     <p>The saint is depicted standing with his arms raised and hands open. It is believed that placing your fingertips on the saint's fingers and pressing gently could cause the entire stele to sink into the wall.</p>
 
-    <img src="img/foto4.jpg" alt="Dettaglio Stargate San Ermolao" loading="lazy" width="800" height="1200">
+    <img src="img/foto4.jpg" alt="Dettaglio Stargate San Ermolao" loading="lazy">
     
     <p>For it to work, the portal required a conductor of energy: a large wooden cross that was removed in the 1960s.</p>
 
     <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2799.349633856233!2d12.3216839!3d45.441052!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x477eb1c3066d9943%3A0x867018d975196f75!2sChiesa%20di%20San%20Simeon%20Profeta%20(San%20Simeon%20Grando)!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2799.3970275810264!2d12.3218713!3d45.4411111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1c572000001%3A0x959714850731f87c!2sChiesa%20di%20San%20Simeon%20Profeta!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
