@@ -17,7 +17,6 @@
             background-color: #fff;
         }
 
-        /* STILE CONTENITORE BOTTONE */
         .footer-nav {
             text-align: center;
             margin-top: 50px;
@@ -38,7 +37,6 @@
         }
         .btn-back:hover { background-color: #C0392B; }
 
-        /* IMMAGINI OTTIMIZZATE E DIMEZZATE */
         img { 
             width: 50%; 
             height: auto; 
@@ -59,7 +57,6 @@
             font-size: 0.95em;
         }
 
-        /* MAPPA RESPONSIVE (Stile Stargate) */
         .map-container {
             margin: 30px 0;
             border-radius: 8px;
@@ -86,23 +83,24 @@
         }
         .map-link:hover { color: #C0392B; }
 
-        /* DECORAZIONE FILIGRANA */
+        /* DECORAZIONE FILIGRANA MODIFICATA */
         .guardia-veneziana {
             position: absolute; 
-            bottom: 400px; /* Alzata per non coprire la mappa */
+            bottom: 475px; /* Alzata */
             right: -20px;       
             width: 150px; 
             opacity: 0.4; 
             z-index: -1;         
             pointer-events: none;
-            transform: rotate(25deg); 
+            transform: rotate(15deg); /* Raddrizzata */
+            transition: all 0.5s ease;
         }
 
         @media (max-width: 600px) {
             body { padding: 15px; }
             h1 { font-size: 1.5em; }
             img { width: 80%; }
-            .guardia-veneziana { width: 100px; opacity: 0.2; }
+            .guardia-veneziana { width: 100px; opacity: 0.2; bottom: 520px; }
         }
     </style>
 </head>
