@@ -13,7 +13,8 @@
             padding: 20px; 
             color: #333; 
             position: relative; 
-            overflow-x: hidden; 
+            overflow-x: hidden;
+            background-color: #fff;
         }
 
         /* STILE CONTENITORE BOTTONE */
@@ -37,24 +38,44 @@
         }
         .btn-back:hover { background-color: #C0392B; }
 
-        img { width: 100%; border-radius: 8px; margin-bottom: 20px; display: block; }
-        h1 { color: #2c3e50; }
-        .highlight { background: #fcf8e3; padding: 10px; border-left: 5px solid #faf2cc; margin-bottom: 20px; }
+        /* IMMAGINI OTTIMIZZATE E DIMEZZATE */
+        img { 
+            width: 50%; /* Grandezza dimezzata */
+            height: auto; 
+            max-width: 100%;
+            border-radius: 8px; 
+            margin: 0 auto 20px auto; /* Centrate */
+            display: block;
+            image-rendering: -webkit-optimize-contrast; 
+        }
 
+        h1 { color: #2c3e50; font-size: 1.8em; }
+        
+        .highlight { 
+            background: #fcf8e3; 
+            padding: 15px; 
+            border-left: 5px solid #faf2cc; 
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        /* DECORAZIONE FILIGRANA */
         .guardia-veneziana {
             position: absolute; 
-            bottom: 120px; /* Alzata leggermente per non sovrapporsi al bottone */
+            bottom: 150px; 
             right: -20px;       
-            width: 250px; 
-            opacity: 0.6; 
-            z-index: 1;         
+            width: 150px; 
+            opacity: 0.4; 
+            z-index: -1;         
             pointer-events: none;
             transform: rotate(25deg); 
-            transition: all 0.5s ease;
         }
 
         @media (max-width: 600px) {
-            .guardia-veneziana { width: 150px; right: -10px; opacity: 0.4; }
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; }
+            img { width: 80%; } /* Più grandi su mobile per visibilità */
+            .guardia-veneziana { width: 100px; opacity: 0.2; }
         }
     </style>
 </head>
@@ -64,7 +85,7 @@
     <p>After admiring the Bridge of Sighs, walk past the Ponte della Paglia and take the first road on the left.</p>
     <p>This is the <strong>calle degli Albanesi</strong>, which runs along the ancient jailhouse.</p>
     
-    <img src="img/foto2.jpg" alt="Calle degli Albanesi">
+    <img src="img/foto2.jpg" alt="Calle degli Albanesi" loading="lazy">
 
     <div class="highlight">
         <p>Pay attention to the large stones, and you will notice that one of them is particularly worn. Why? </p>
@@ -72,9 +93,9 @@
 
     <p>When the guards were on patrol, they had to wear very heavy armor. Often, they grew tired and leaned against the stone to rest.</p>
 
-    <img src="img/foto1.JPG" alt="Dettaglio pietra usurata">
+    <img src="img/foto1.JPG" alt="Dettaglio pietra usurata" loading="lazy">
     
-    <img src="img/guardia_veneziana_matita.png" class="guardia-veneziana" alt="Guardia Veneziana Storica">
+    <img src="img/guardia_veneziana_matita.png" class="guardia-veneziana" alt="Guardia Veneziana Storica" loading="lazy">
 
     <div class="footer-nav">
         <a href="index.html" class="btn-back">← Torna alla Home</a>
