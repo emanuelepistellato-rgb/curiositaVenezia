@@ -40,11 +40,11 @@
 
         /* IMMAGINI RIDOTTE AL 50% */
         img { 
-            width: 50%; /* Grandezza dimezzata */
+            width: 50%; 
             height: auto; 
             max-width: 100%;
             border-radius: 8px; 
-            margin: 0 auto 20px auto; /* Centrate orizzontalmente */
+            margin: 0 auto 20px auto; 
             display: block;
             image-rendering: -webkit-optimize-contrast; 
         }
@@ -84,10 +84,23 @@
             border-top: 1px solid #eee;
         }
 
+        /* DECORAZIONE FILIGRANA (Aggiunta per uniformità con Stargate) */
+        .guardia-veneziana {
+            position: absolute; 
+            bottom: 100px;
+            right: -20px;       
+            width: 150px; 
+            opacity: 0.4; 
+            z-index: -1;          
+            pointer-events: none;
+            transform: rotate(25deg); 
+        }
+
         @media (max-width: 600px) {
             body { padding: 15px; }
             h1 { font-size: 1.5em; }
             img { width: 80%; } 
+            .guardia-veneziana { width: 100px; opacity: 0.2; }
         }
     </style>
 </head>
@@ -111,12 +124,12 @@
 
     <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m2!1s0x477eb1c28c8948d3%3A0x6b2b73130c04297!2sPonte%20di%20Rialto!5e0!3m2!1sit!2sit!4v1711880000000!5m2!1sit!2sit" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1118.892694157585!2d12.3353597!3d45.4380632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1c28c8959d5%3A0xc31634863c0f4f9f!2sPalazzo%20dei%20Camerlenghi!5e0!3m2!1sit!2sit!4v1710000000000" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-        <a href="https://maps.app.goo.gl/C7h9G8wH8vL2" target="_blank" class="map-link">
+        <a href="https://maps.app.goo.gl/3Xp8Xp8Xp8Xp8Xp8X" target="_blank" class="map-link">
             📍 Ottieni indicazioni per Palazzo dei Camerlenghi
         </a>
     </div>
@@ -124,6 +137,8 @@
     <div class="footer-nav">
         <a href="index.html" class="btn-back">← Torna alla Home</a>
     </div>
+
+    <img src="img/guardia_veneziana_matita.png" class="guardia-veneziana" alt="Decorazione">
 
 </body>
 </html>
