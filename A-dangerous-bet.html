@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A dangerous bet - Venezia Segreta</title>
+    <title>A Dangerous Bet - Venezia Segreta</title>
     <style>
         body { 
             font-family: sans-serif; 
@@ -13,10 +13,11 @@
             padding: 20px; 
             color: #333; 
             position: relative; 
-            overflow-x: hidden;
+            overflow-x: hidden; 
             background-color: #fff;
         }
 
+        /* STILE CONTENITORE BOTTONE */
         .footer-nav {
             text-align: center;
             margin-top: 50px;
@@ -37,12 +38,13 @@
         }
         .btn-back:hover { background-color: #C0392B; }
 
+        /* IMMAGINI RIDOTTE AL 50% */
         img { 
-            width: 50%; 
+            width: 50%; /* Grandezza dimezzata */
             height: auto; 
             max-width: 100%;
             border-radius: 8px; 
-            margin: 0 auto 20px auto; 
+            margin: 0 auto 20px auto; /* Centrate orizzontalmente */
             display: block;
             image-rendering: -webkit-optimize-contrast; 
         }
@@ -57,12 +59,12 @@
             font-size: 0.95em;
         }
 
+        /* MAPPA */
         .map-container {
             margin: 30px 0;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #eee;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .map-container iframe {
             width: 100%;
@@ -81,58 +83,43 @@
             font-weight: bold;
             border-top: 1px solid #eee;
         }
-        .map-link:hover { color: #C0392B; }
-
-        /* DECORAZIONE FILIGRANA MODIFICATA */
-        .guardia-veneziana {
-            position: absolute; 
-            bottom: 475px; /* Alzata */
-            right: -20px;       
-            width: 150px; 
-            opacity: 0.4; 
-            z-index: -1;         
-            pointer-events: none;
-            transform: rotate(15deg); /* Raddrizzata */
-            transition: all 0.5s ease;
-        }
 
         @media (max-width: 600px) {
             body { padding: 15px; }
             h1 { font-size: 1.5em; }
-            img { width: 80%; }
-            .guardia-veneziana { width: 100px; opacity: 0.2; bottom: 520px; }
+            img { width: 80%; } 
         }
     </style>
 </head>
 <body>
 
-    <h1>A Little Scratching</h1>
-    <p>After admiring the Bridge of Sighs, walk past the Ponte della Paglia and take the first road on the left.</p>
-    <p>This is the <strong>calle degli Albanesi</strong>, which runs along the ancient jailhouse.</p>
+    <h1>A Dangerous Bet</h1>
     
-    <img src="img/foto2.jpg" alt="Calle degli Albanesi" loading="lazy">
+    <p>Centuries ago, the Rialto Bridge was made of wood, and on several occasions, the idea of a stone bridge had been considered.</p>
+    
+    <img src="img/Adb.jpg" alt="Rialto Bridge Detail" loading="lazy">
 
     <div class="highlight">
-        <p>Pay attention to the large stones, and you will notice that one of them is particularly worn. Why? </p>
+        <p>The decision divided the people, and among the most ardent unbelievers, convinced that it was impossible to build it in stone, there were two old people, a man and a woman.</p> 
     </div>
 
-    <p>When the guards were on patrol, they had to wear very heavy armor. Often, they grew tired and leaned against the stone to rest.</p>
+    <p>In a tavern near Rialto, during a heated discussion, the old man exclaimed: "If the bridge is built, may a nail grow between my thighs!" And the old woman: "And may my cunt burn!"</p>
 
-    <img src="img/foto1.JPG" alt="Dettaglio pietra usurata" loading="lazy">
+    <img src="img/Adb2.jpg" alt="Palazzo dei Camerlenghi Capitals" loading="lazy">
+    
+    <p>The bet made the rounds of the city, so much so that once the bridge was completed, at Palazzo dei Camerlenghi, two capitals were carved into the pillars depicting the two protagonists of the bet, as a warning to unbelievers about the abilities of man.</p>
 
     <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d700.123456789!2d12.341111!3d45.433889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1d94f83c61d%3A0x6b4974f266205562!2sCalle%20degli%20Albanesi%2C%2030122%20Venezia%20VE!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m2!1s0x477eb1c28c8948d3%3A0x6b2b73130c04297!2sPonte%20di%20Rialto!5e0!3m2!1sit!2sit!4v1711880000000!5m2!1sit!2sit" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Calle+degli+Albanesi+Venezia" target="_blank" class="map-link">
-            📍 Ottieni indicazioni per Calle degli Albanesi
+        <a href="https://maps.app.goo.gl/C7h9G8wH8vL2" target="_blank" class="map-link">
+            📍 Ottieni indicazioni per Palazzo dei Camerlenghi
         </a>
     </div>
-    
-    <img src="img/guardia_veneziana_matita.png" class="guardia-veneziana" alt="Guardia Veneziana Storica" loading="lazy">
 
     <div class="footer-nav">
         <a href="index.html" class="btn-back">← Torna alla Home</a>
