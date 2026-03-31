@@ -6,11 +6,11 @@
     <title>Venezia Invisibile - Curiosità e Scorci</title>
     <meta name="description" content="Scopri i segreti e le curiosità meno note di Venezia. Storie di guardie, pietre consumate e angoli nascosti.">
     <style>
-        /* BASE STYLE - Uniformato con Stargate.html */
+        /* BASE STYLE */
         body { 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
             line-height: 1.6; 
-            max-width: 900px; 
+            max-width: 1000px; 
             margin: auto; 
             padding: 40px 20px; 
             color: #2c3e50; 
@@ -43,7 +43,7 @@
         nav a:hover { color: #C0392B; }
 
         /* HERO SECTION */
-        header { text-align: center; margin-bottom: 100px; }
+        header { text-align: center; margin-bottom: 80px; }
         header h1 { font-size: 3.5em; font-weight: 300; margin-bottom: 10px; color: #2c3e50; }
         header p { font-style: italic; color: #7f8c8d; font-size: 1.1em; }
 
@@ -51,7 +51,7 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
         .card {
@@ -64,32 +64,34 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            text-decoration: none; /* Rende l'intera card cliccabile volendo, o mantiene pulito il testo */
+            text-decoration: none;
             color: inherit;
         }
 
-        .card:hover { 
+        .card:hover:not(.locked) { 
             transform: translateY(-10px); 
             border-color: #2c3e50; 
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        .card h2 { font-size: 1.4em; margin-top: 0; color: #2c3e50; transition: 0.3s; }
-        .card:hover h2 { color: #C0392B; }
+        .card h2 { font-size: 1.3em; margin-top: 0; color: #2c3e50; transition: 0.3s; }
+        .card:hover:not(.locked) h2 { color: #C0392B; }
         
-        .card p { font-size: 0.95em; color: #666; margin-bottom: 25px; }
+        .card p { font-size: 0.9em; color: #666; margin-bottom: 20px; flex-grow: 1; }
         
         .btn-link { 
             text-decoration: none; 
             color: #C0392B; 
             font-weight: bold; 
-            font-size: 0.85em; 
+            font-size: 0.8em; 
             text-transform: uppercase; 
             letter-spacing: 1px;
             display: inline-block;
             transition: 0.3s;
         }
-        .btn-link:hover { letter-spacing: 2px; }
+
+        .locked { cursor: default; opacity: 0.8; }
+        .locked .btn-link { color: #ccc; cursor: not-allowed; }
 
         /* LA GUARDIA VENEZIANA - BACKGROUND DECORATION */
         .guardia-home {
@@ -107,7 +109,6 @@
         @media (max-width: 600px) {
             header h1 { font-size: 2.2em; }
             nav { flex-direction: column; gap: 20px; text-align: center; }
-            .guardia-home { width: 200px; right: -50px; }
         }
     </style>
 </head>
@@ -128,37 +129,81 @@
     </header>
 
     <main class="grid">
-        <article class="card">
+        <a href="a-little-scratching.html" class="card">
             <div>
                 <h2>A Little Scratching</h2>
-                <p>Perché una pietra presso la calle degli Albanesi è così consumata? La storia delle guardie stanche e delle loro pesanti armature.</p>
+                <p>La storia delle guardie stanche e delle loro armature che hanno consumato la pietra della Calle degli Albanesi.</p>
             </div>
-            <a href="a-little-scratching.html" class="btn-link">Leggi il segreto →</a>
-        </article>
+            <span class="btn-link">Leggi il segreto →</span>
+        </a>
 
-        <article class="card">
+        <a href="Stargate.html" class="card">
             <div>
                 <h2>Stargate</h2>
-                <p>Un'antica soglia di marmo tra i canali: scopri la leggenda del portale di San Simeon Grando e il mistero delle persone svanite nel nulla.</p>
+                <p>Un'antica soglia di marmo a San Simeon Grando che la leggenda vuole sia un portale verso altre dimensioni.</p>
             </div>
-            <a href="Stargate.html" class="btn-link">Leggi il segreto →</a>
-        </article>
+            <span class="btn-link">Leggi il segreto →</span>
+        </a>
 
-        <article class="card">
+        <a href="A-dangerous-bet.html" class="card">
             <div>
                 <h2>A Dangerous Bet</h2>
-                <p>Una scommessa azzardata tra le calli: la storia di un nobile veneziano che sfidò la sorte e le ombre della laguna.</p>
+                <p>La scommessa scolpita nei capitelli di Palazzo dei Camerlenghi tra un uomo e una donna increduli sul Ponte di Rialto.</p>
             </div>
-            <a href="A-dangerous-bet.html" class="btn-link">Leggi il segreto →</a>
-        </article>
-        
-        <article class="card">
+            <span class="btn-link">Leggi il segreto →</span>
+        </a>
+
+        <a href="A-matter-of-size.html" class="card">
             <div>
-                <h2>Il Ponte del Chiodo</h2>
-                <p>L'ultimo testimone di un'antica Venezia senza parapetti. Una sfida alla gravità e alla storia dei canali veneziani.</p>
+                <h2>A Matter of Size</h2>
+                <p>Le rigide tabelle di marmo del mercato di Rialto che ancora oggi ricordano le taglie minime per la vendita del pesce.</p>
             </div>
-            <a href="#" class="btn-link" style="color: #ccc; cursor: not-allowed;">Prossimamente...</a>
-        </article>
+            <span class="btn-link">Leggi il segreto →</span>
+        </a>
+
+        <div class="card locked"><h2>A peculiar note</h2><p>Un dettaglio curioso inciso nella pietra.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>A perfect picture</h2><p>Lo scorcio ideale immortalato dai viaggiatori del passato.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>A special stairway</h2><p>Una scala veneziana dalle caratteristiche uniche.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>A unique bridge</h2><p>Un ponte veneziano diverso da tutti gli altri.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>A unique vista</h2><p>Un panorama segreto accessibile solo ai più curiosi.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Buffalo Bill in Venice</h2><p>Quando il selvaggio West arrivò tra i canali della laguna.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Exemplary punishment</h2><p>La giustizia veneziana tra le colonne di Piazza San Marco.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>First public gaming house</h2><p>Il Ridotto: dove Venezia ha inventato il casinò pubblico.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Last chance</h2><p>L'ultima opportunità per i condannati prima della sentenza.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Leaning bell towers</h2><p>I campanili che sfidano la gravità sopra i tetti veneziani.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Love</h2><p>Leggende d'amore sussurrate tra le calli meno frequentate.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Magic doors</h2><p>Soglie cariche di simbolismo e mistero.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Making a virtue of necessity</h2><p>L'ingegno dei veneziani per risolvere i problemi quotidiani.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Mascheroni</h2><p>Le facce mostruose che osservano i passanti dai palazzi.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Odd circles</h2><p>Simboli circolari misteriosi incisi nei pavimenti delle chiese.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Pigeons</h2><p>La lunga storia del rapporto tra Venezia e i suoi volatili.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Seasickness</h2><p>Consigli e aneddoti veneziani sul mal di mare.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Spooky columns</h2><p>Le colonne di Palazzo Ducale cariche di superstizione.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The democratic stone</h2><p>Il luogo dove la voce del popolo veniva ascoltata.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The first aerial bombardment</h2><p>Quando le bombe caddero su Venezia dal cielo nel 1849.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The first woman graduate</h2><p>Elena Lucrezia Cornaro Piscopia: un primato veneziano.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The grilles of the new prisons</h2><p>La vista dei prigionieri attraverso le inferriate dei Piombi.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The hunchback of Rialto</h2><p>Il Gobbo di Rialto e le sue antiche funzioni pubbliche.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The largest canvas painting</h2><p>Il Paradiso del Tintoretto a Palazzo Ducale.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The lived bell tower</h2><p>Storia segreta dell'abitazione all'interno del campanile.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The lucky charm belly</h2><p>Un tocco di fortuna scolpito nella pietra veneziana.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The lucky house</h2><p>Un'abitazione veneziana baciata dalla buona sorte.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The magic courtyard</h2><p>Cortili nascosti che sembrano fuori dal tempo.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The narrowest palace</h2><p>L'architettura estrema per sfruttare ogni centimetro.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The old Lady with the mortar</h2><p>La donna che salvò Venezia con un mortaio di pietra.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The repentant architect</h2><p>La leggenda dell'architetto che chiese perdono per la sua opera.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The secret door</h2><p>Passaggi segreti e accessi privati dei palazzi nobiliari.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The smallest church in Venice</h2><p>Un piccolo scrigno di fede tra le calli.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>The war of punches</h2><p>La storica rivalità tra Castellani e Nicolotti sui ponti.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Venetian Venus</h2><p>La bellezza classica reinterpretata dagli artisti lagunari.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Watch your feet</h2><p>I pericoli e i dettagli nascosti nel selciato veneziano.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>Watch your head</h2><p>I sottoportici bassi che richiedono attenzione.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked"><h2>You mustn't get fat!</h2><p>La calle così stretta che mette alla prova la linea dei passanti.</p><span class="btn-link">Prossimamente...</span></div>
+        <div class="card locked">
+            <h2>Il Ponte del Chiodo</h2>
+            <p>L'ultimo testimone di un'antica Venezia senza parapetti.</p>
+            <span class="btn-link">Prossimamente...</span>
+        </div>
     </main>
 
     <img src="img/guardia_veneziana_matita.png" class="guardia-home" alt="Guardia Veneziana Decorazione">
