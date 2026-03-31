@@ -1,0 +1,144 @@
+<!DOCTYPE html> 
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Matter of Size - Venezia Segreta</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            line-height: 1.6; 
+            max-width: 800px; 
+            margin: auto; 
+            padding: 20px; 
+            color: #333; 
+            position: relative; 
+            overflow-x: hidden; 
+            background-color: #fff;
+        }
+
+        /* STILE CONTENITORE BOTTONE */
+        .footer-nav {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+        .btn-back:hover { background-color: #C0392B; }
+
+        /* IMMAGINI RIDOTTE AL 50% */
+        img { 
+            width: 50%; 
+            height: auto; 
+            max-width: 100%;
+            border-radius: 8px; 
+            margin: 0 auto 20px auto; 
+            display: block;
+            image-rendering: -webkit-optimize-contrast; 
+        }
+
+        h1 { color: #2c3e50; font-size: 1.8em; }
+        
+        .highlight { 
+            background: #fcf8e3; 
+            padding: 15px; 
+            border-left: 5px solid #faf2cc; 
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        /* MAPPA */
+        .map-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: 0;
+            display: block;
+        }
+        .map-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: #f9f9f9;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+        }
+
+        /* DECORAZIONE FILIGRANA */
+        .guardia-veneziana {
+            position: absolute; 
+            bottom: 100px;
+            right: -20px;       
+            width: 150px; 
+            opacity: 0.4; 
+            z-index: -1;          
+            pointer-events: none;
+            transform: rotate(25deg); 
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; }
+            img { width: 80%; } 
+            .guardia-veneziana { width: 100px; opacity: 0.2; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>A Matter of Size</h1>
+    
+    <p>In Venice, a judiciary body was in charge of controlling and ensuring that the minimum sizes for sale were respected. The Serenissima Republic of Venice was particularly strict with those selling undersized fish.</p>
+    
+    <img src="img/ams.jpg" alt="Rialto Market Portico" loading="lazy">
+
+    <div class="highlight">
+        <p>Even today, in the Rialto fish market, you can see a white marble plaque listing the minimum lengths allowed for the sale of fish.</p> 
+    </div>
+
+    <img src="img/ams4.jpg" alt="Fish Size Plaque" loading="lazy">
+
+    <p>Even more interesting and curious is the engraving on the column of the portico of the Church of San Giacomo, also in Rialto, which displays the minimum size requirements for both fish and mussels.</p>
+
+    <img src="img/ams2.jpg" alt="Column Engravings" loading="lazy">
+
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2799.382023151855!2d12.3344443!3d45.4388889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1c60f2e0611%3A0x633390c9b0e9f1a0!2sCampo%20San%20Giacomo%20di%20Rialto!5e0!3m2!1sit!2sit!4v1711885000000!5m2!1sit!2sit" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <a href="https://maps.app.goo.gl/YyZ9R7D9QZ6v8Fm76" target="_blank" class="map-link">
+            📍 Ottieni indicazioni per Campo San Giacomo di Rialto
+        </a>
+    </div>
+
+    <div class="footer-nav">
+        <a href="index.html" class="btn-back">← Torna alla Home</a>
+    </div>
+
+    <img src="img/guardia_veneziana_matita.png" class="guardia-veneziana" alt="Decorazione">
+
+</body>
+</html>
