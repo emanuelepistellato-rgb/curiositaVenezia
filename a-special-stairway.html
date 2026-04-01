@@ -3,122 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Stairway - Venezia Segreta</title>
+    <title>Venezia Invisibile - A Special Stairway</title>
     <style>
-        body { 
-            font-family: sans-serif; 
-            line-height: 1.6; 
-            max-width: 800px; 
-            margin: auto; 
-            padding: 20px; 
-            color: #333; 
-            position: relative; 
-            overflow-x: hidden; 
-            background-color: #fff;
-        }
-
-        .footer-nav {
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .btn-back {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #2c3e50;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 1em;
-            transition: background 0.3s;
-        }
-        .btn-back:hover { background-color: #C0392B; }
-
-        img { 
-            width: 50%; 
-            height: auto; 
-            max-width: 100%;
-            border-radius: 8px; 
-            margin: 0 auto 20px auto; 
-            display: block;
-            image-rendering: -webkit-optimize-contrast; 
-        }
-
-        h1 { color: #2c3e50; font-size: 1.8em; }
-        
-        .highlight { 
-            background: #fcf8e3; 
-            padding: 15px; 
-            border-left: 5px solid #faf2cc; 
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
-
-        .map-container {
-            margin: 30px 0;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #eee;
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 250px;
-            border: 0;
-            display: block;
-        }
-        .map-link {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            background: #f9f9f9;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: bold;
-            border-top: 1px solid #eee;
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; }
-            img { width: 80%; } 
-        }
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; color: #333; background-color: #fff; position: relative; }
+        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .logo { font-weight: bold; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; color: #2c3e50; font-size: 0.9em; }
+        .lang-btn { border: 1px solid #ccc; background: white; cursor: pointer; padding: 5px 10px; font-size: 0.8em; border-radius: 4px; }
+        .lang-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
+        h1 { color: #2c3e50; font-size: 1.8em; margin-top: 30px; }
+        img { width: 50%; height: auto; max-width: 100%; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .highlight { background: #fcf8e3; padding: 15px; border-left: 5px solid #faf2cc; margin-bottom: 20px; font-size: 0.95em; border-radius: 0 4px 4px 0; }
+        .map-container { margin: 30px 0; border-radius: 8px; overflow: hidden; border: 1px solid #eee; }
+        .map-container iframe { width: 100%; height: 250px; border: 0; display: block; }
+        .map-link { display: block; text-align: center; padding: 10px; background: #f9f9f9; color: #2c3e50; text-decoration: none; font-size: 0.9em; font-weight: bold; border-top: 1px solid #eee; }
+        .footer-nav { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; }
+        .btn-back { display: inline-block; padding: 12px 25px; background-color: #2c3e50; color: white; text-decoration: none; border-radius: 4px; }
+        [data-lang] { display: none; }
+        body.lang-it [data-lang="it"] { display: block; }
+        body.lang-en [data-lang="en"] { display: block; }
+        body.lang-it span[data-lang="it"] { display: inline; }
+        body.lang-en span[data-lang="en"] { display: inline; }
     </style>
 </head>
-<body>
+<body class="lang-it">
 
-    <h1>A Special Stairway</h1>
+    <nav>
+        <a href="index.html" class="logo">VENEZIA INVISIBILE</a>
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-it" onclick="setLanguage('it')">IT</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+        </div>
+    </nav>
+
+    <h1 data-lang="it">Una scala speciale</h1>
+    <h1 data-lang="en">A Special Stairway</h1>
     
-    <p>If you walk down a narrow alleyway close to Campo Manin (Manin Square), you will reach a tiny courtyard with Palazzo Contarini and a beautiful external stairway.</p>
+    <div data-lang="it">
+        <p>Se cammini lungo una stretta calle vicino a Campo Manin, raggiungerai un piccolo cortile con Palazzo Contarini e una bellissima scala esterna.</p>
+    </div>
+    <div data-lang="en">
+        <p>If you walk down a narrow alleyway close to Campo Manin (Manin Square), you will reach a tiny courtyard with Palazzo Contarini and a beautiful external stairway.</p>
+    </div>
     
-    <img src="img/aps.jpg" alt="Palazzo Contarini del Bovolo Exterior" loading="lazy">
+    <img src="img/aps.jpg" alt="Scala del Bovolo" loading="lazy">
 
     <div class="highlight">
-        <p>The spiral stairway is the Scala del Bovolo (the snail-shell stairway), so called because of its curious snail-shell shape.</p> 
+        <p data-lang="it">La scala a chiocciola è la Scala del Bovolo (la scala a guscio di lumaca), così chiamata per la sua curiosa forma.</p>
+        <p data-lang="en">The spiral stairway is the Scala del Bovolo (the snail-shell stairway), so called because of its curious snail-shell shape.</p> 
     </div>
 
-    <img src="img/aps2.jpg" alt="Scala del Bovolo Detail" loading="lazy">
+    <img src="img/aps2.jpg" alt="Dettaglio Scala del Bovolo" loading="lazy">
     
-    <p>The stairway was built in 1499 by the owner so that he could reach his bedroom… on horseback! This unique architectural gem combines Gothic and Renaissance styles in a way seen nowhere else in Venice.</p>
+    <div data-lang="it">
+        <p>La scala fu costruita nel 1499 dal proprietario per poter raggiungere la sua camera da letto... a cavallo! Questo gioiello unico combina stili gotico e rinascimentale in un modo che non si vede da nessun'altra parte a Venezia.</p>
+    </div>
+    <div data-lang="en">
+        <p>The stairway was built in 1499 by the owner so that he could reach his bedroom… on horseback! This unique architectural gem combines Gothic and Renaissance styles in a way seen nowhere else in Venice.</p>
+    </div>
 
     <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2799.4184!2d12.3344!3d45.4348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1d911963071%3A0xc3b8a3683a48e4!2sScala%20Contarini%20del%20Bovolo!5e0!3m2!1sit!2sit!4v1711880000000" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
+            src="https://www.google.com/maps/contrib/107198270144208763192/reviews" 
+            allowfullscreen="" loading="lazy">
         </iframe>
-        <a href="https://maps.app.goo.gl/9R8vP8kR9Z9z9Z9z9" target="_blank" class="map-link">
-            📍 Ottieni indicazioni per Scala del Bovolo
+        <a href="https://maps.google.com/maps7" target="_blank" class="map-link">
+            📍 <span data-lang="it">Ottieni indicazioni per Scala del Bovolo</span><span data-lang="en">Get directions to Scala del Bovolo</span>
         </a>
     </div>
 
     <div class="footer-nav">
-        <a href="index.html" class="btn-back">← Torna alla Home</a>
+        <a href="index.html" class="btn-back">
+            <span data-lang="it">← Torna alla Home</span>
+            <span data-lang="en">← Back to Home</span>
+        </a>
     </div>
 
+    <script>
+        function setLanguage(lang) {
+            document.body.className = 'lang-' + lang;
+            document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            localStorage.setItem('veneziaLang', lang);
+        }
+        setLanguage(localStorage.getItem('veneziaLang') || 'it');
+    </script>
 </body>
 </html>
