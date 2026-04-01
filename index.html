@@ -4,143 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venezia Invisibile - Curiosità e Scorci</title>
-    <meta name="description" content="Scopri i segreti e le curiosità meno note di Venezia. Storie di guardie, pietre consumate e angoli nascosti.">
     <style>
-        /* BASE STYLE */
-        body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            line-height: 1.6; 
-            max-width: 1000px; 
-            margin: auto; 
-            padding: 40px 20px; 
-            color: #2c3e50; 
-            background-color: #f9f9f9;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* NAVIGATION BAR */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 80px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-
-        .logo { 
-            font-weight: bold; 
-            letter-spacing: 3px; 
-            text-transform: uppercase; 
-            font-size: 1.2em; 
-            color: #2c3e50; 
-            text-decoration: none;
-        }
-
-        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
-        nav a { text-decoration: none; color: #666; font-size: 0.85em; text-transform: uppercase; transition: 0.3s; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; max-width: 1000px; margin: auto; padding: 40px 20px; color: #2c3e50; background-color: #f9f9f9; }
+        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .logo { font-weight: bold; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; color: #2c3e50; font-size: 1.2em; }
+        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #666; font-size: 0.8em; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: #C0392B; }
-
-        /* LANGUAGE SWITCHER */
-        .lang-switch {
-            display: flex;
-            gap: 10px;
-            margin-left: 20px;
-        }
-        .lang-btn {
-            background: none;
-            border: 1px solid #ccc;
-            padding: 2px 8px;
-            cursor: pointer;
-            font-size: 0.75em;
-            border-radius: 3px;
-            color: #666;
-            transition: 0.3s;
-        }
-        .lang-btn.active {
-            background: #2c3e50;
-            color: white;
-            border-color: #2c3e50;
-        }
-
-        /* HERO SECTION */
-        header { text-align: center; margin-bottom: 80px; }
-        header h1 { font-size: 3.5em; font-weight: 300; margin-bottom: 10px; color: #2c3e50; }
-        header p { font-style: italic; color: #7f8c8d; font-size: 1.1em; }
-
-        /* GRID DELLE CURIOSITÀ */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #eee;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .card:hover:not(.locked) { 
-            transform: translateY(-10px); 
-            border-color: #2c3e50; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .card h2 { font-size: 1.3em; margin-top: 0; color: #2c3e50; transition: 0.3s; }
-        .card:hover:not(.locked) h2 { color: #C0392B; }
         
-        .card p { font-size: 0.9em; color: #666; margin-bottom: 20px; flex-grow: 1; }
+        .lang-switch { display: flex; gap: 5px; }
+        .lang-btn { border: 1px solid #ccc; background: white; cursor: pointer; padding: 2px 8px; font-size: 0.7em; border-radius: 3px; }
+        .lang-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
+
+        header { text-align: center; margin-bottom: 60px; }
+        header h1 { font-size: 3em; font-weight: 300; margin-bottom: 10px; }
         
-        .btn-link { 
-            text-decoration: none; 
-            color: #C0392B; 
-            font-weight: bold; 
-            font-size: 0.8em; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            display: inline-block;
-            transition: 0.3s;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: white; padding: 30px; border-radius: 4px; border: 1px solid #eee; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .card:hover:not(.locked) { transform: translateY(-10px); border-color: #2c3e50; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .card h2 { font-size: 1.3em; margin-top: 0; color: #2c3e50; }
+        .card p { font-size: 0.9em; color: #666; flex-grow: 1; }
+        .btn-link { color: #C0392B; font-weight: bold; font-size: 0.8em; text-transform: uppercase; margin-top: 20px; }
+        
+        .locked { opacity: 0.7; cursor: default; background-color: #f2f2f2; }
+        .locked .btn-link { color: #999; }
 
-        .locked { cursor: default; opacity: 0.8; }
-        .locked .btn-link { color: #ccc; cursor: not-allowed; }
-
-        /* GESTIONE VISIBILITÀ LINGUA */
         [data-lang] { display: none; }
         body.lang-it [data-lang="it"] { display: block; }
         body.lang-en [data-lang="en"] { display: block; }
-        /* Inline elements fix */
-        body.lang-it span[data-lang="it"], body.lang-it a[data-lang="it"] { display: inline; }
-        body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"] { display: inline; }
+        body.lang-it span[data-lang="it"] { display: inline; }
+        body.lang-en span[data-lang="en"] { display: inline; }
 
-        /* LA GUARDIA VENEZIANA */
-        .guardia-home {
-            position: fixed;
-            bottom: -30px;
-            right: -100px;
-            width: 350px;
-            opacity: 0.15; 
-            z-index: -1;
-            transform: rotate(15deg);
-            pointer-events: none;
-            filter: grayscale(100%);
-        }
-
-        @media (max-width: 600px) {
-            header h1 { font-size: 2.2em; }
-            nav { flex-direction: column; gap: 20px; text-align: center; }
-            nav ul { flex-wrap: wrap; justify-content: center; }
-        }
+        @media (max-width: 600px) { header h1 { font-size: 2em; } nav { flex-direction: column; gap: 20px; } }
     </style>
 </head>
 <body class="lang-it">
@@ -149,108 +44,105 @@
         <a href="index.html" class="logo">Venezia Invisibile</a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#"><span data-lang="it">Segreti</span><span data-lang="en">Secrets</span></a></li>
-            <li><a href="#"><span data-lang="it">Scorci</span><span data-lang="en">Sights</span></a></li>
             <li class="lang-switch">
-                <button class="lang-btn active" onclick="setLanguage('it')">IT</button>
-                <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn active" id="btn-it" onclick="setLanguage('it')">IT</button>
+                <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
             </li>
         </ul>
     </nav>
 
     <header>
         <h1 data-lang="it">Oltre la superficie</h1>
-        <h1 data-lang="en">Beyond the Surface</h1>
-        
+        <h1 data-lang="en">Beyond the surface</h1>
         <p data-lang="it">Storie rimosse, pietre consumate e angoli dimenticati della Serenissima.</p>
-        <p data-lang="en">Forgotten stories, worn stones, and hidden corners of the Serenissima.</p>
+        <p data-lang="en">Forgotten stories, worn stones and hidden corners of the Serenissima.</p>
     </header>
 
     <main class="grid">
         <a href="a-little-scratching.html" class="card">
-            <div data-lang="it">
-                <h2>A Little Scratching</h2>
-                <p>La storia delle guardie stanche e delle loro armature che hanno consumato la pietra della Calle degli Albanesi.</p>
-            </div>
-            <div data-lang="en">
-                <h2>A Little Scratching</h2>
-                <p>The story of tired guards and their armor that wore down the stone of Calle degli Albanesi.</p>
-            </div>
-            <span class="btn-link">
-                <span data-lang="it">Leggi il segreto →</span>
-                <span data-lang="en">Read the secret →</span>
-            </span>
+            <h2 data-lang="it">A Little Scratching</h2>
+            <h2 data-lang="en">A Little Scratching</h2>
+            <p data-lang="it">La storia delle guardie stanche e delle armature che hanno segnato la pietra della Calle degli Albanesi.</p>
+            <p data-lang="en">The story of tired guards and their armor marking the stone of Calle degli Albanesi.</p>
+            <span class="btn-link"><span data-lang="it">Leggi il segreto →</span><span data-lang="en">Read the secret →</span></span>
         </a>
 
         <a href="Stargate.html" class="card">
-            <div data-lang="it">
-                <h2>Stargate</h2>
-                <p>Un'antica soglia di marmo a San Simeon Grando che la leggenda vuole sia un portale verso altre dimensioni.</p>
-            </div>
-            <div data-lang="en">
-                <h2>Stargate</h2>
-                <p>An ancient marble threshold at San Simeon Grando that legend says is a portal to other dimensions.</p>
-            </div>
-            <span class="btn-link">
-                <span data-lang="it">Leggi il segreto →</span>
-                <span data-lang="en">Read the secret →</span>
-            </span>
+            <h2 data-lang="it">Stargate</h2>
+            <h2 data-lang="en">Stargate</h2>
+            <p data-lang="it">Un'antica soglia di marmo a San Simeon Grando, leggendario portale verso altre dimensioni.</p>
+            <p data-lang="en">An ancient marble threshold at San Simeon Grando, a legendary portal to other dimensions.</p>
+            <span class="btn-link"><span data-lang="it">Leggi il segreto →</span><span data-lang="en">Read the secret →</span></span>
         </a>
 
-        <a href="A-matter-of-size.html" class="card">
-            <div data-lang="it">
-                <h2>A Matter of Size</h2>
-                <p>Le rigide tabelle di marmo del mercato di Rialto che ancora oggi ricordano le taglie minime per la vendita del pesce.</p>
-            </div>
-            <div data-lang="en">
-                <h2>A Matter of Size</h2>
-                <p>The rigid marble plaques at the Rialto market that still list the minimum sizes for selling fish.</p>
-            </div>
-            <span class="btn-link">
-                <span data-lang="it">Leggi il segreto →</span>
-                <span data-lang="en">Read the secret →</span>
-            </span>
+        <a href="A-dangerous-bet.html" class="card">
+            <h2 data-lang="it">A Dangerous Bet</h2>
+            <h2 data-lang="en">A Dangerous Bet</h2>
+            <p data-lang="it">La scommessa scolpita nei capitelli di Palazzo dei Camerlenghi sul Ponte di Rialto.</p>
+            <p data-lang="en">The bet carved into the capitals of Palazzo dei Camerlenghi by the Rialto Bridge.</p>
+            <span class="btn-link"><span data-lang="it">Leggi il segreto →</span><span data-lang="en">Read the secret →</span></span>
         </a>
+
+        <div class="card locked">
+            <h2 data-lang="it">A Matter of Size</h2>
+            <h2 data-lang="en">A Matter of Size</h2>
+            <p data-lang="it">Le tabelle di marmo del mercato di Rialto che indicano le taglie minime per la vendita del pesce.</p>
+            <p data-lang="en">Rialto market marble tables showing minimum sizes for selling fish.</p>
+            <span class="btn-link"><span data-lang="it">Prossimamente...</span><span data-lang="en">Coming soon...</span></span>
+        </div>
+
+        <div class="card locked">
+            <h2 data-lang="it">A Peculiar Note</h2>
+            <h2 data-lang="en">A Peculiar Note</h2>
+            <p data-lang="it">Il buco spia del Casinò Venier e i passaggi segreti per fughe discrete nel XVIII secolo.</p>
+            <p data-lang="en">The peephole of Casino Venier and secret passages for 18th-century escapes.</p>
+            <span class="btn-link"><span data-lang="it">Prossimamente...</span><span data-lang="en">Coming soon...</span></span>
+        </div>
+
+        <div class="card locked">
+            <h2 data-lang="it">A Perfect Picture</h2>
+            <h2 data-lang="en">A Perfect Picture</h2>
+            <p data-lang="it">Il punto esatto in Piazza San Marco per scattare una foto perfettamente allineata con la Basilica.</p>
+            <p data-lang="en">The exact spot in St. Mark's Square for a perfectly aligned photo of the Basilica.</p>
+            <span class="btn-link"><span data-lang="it">Prossimamente...</span><span data-lang="en">Coming soon...</span></span>
+        </div>
+
+        <div class="card locked">
+            <h2 data-lang="it">A Special Stairway</h2>
+            <h2 data-lang="en">A Special Stairway</h2>
+            <p data-lang="it">La Scala del Bovolo: un capolavoro a chiocciola costruito per essere percorso a cavallo.</p>
+            <p data-lang="en">Scala del Bovolo: a spiral masterpiece built to be climbed on horseback.</p>
+            <span class="btn-link"><span data-lang="it">Prossimamente...</span><span data-lang="en">Coming soon...</span></span>
+        </div>
+
+        <div class="card locked">
+            <h2 data-lang="it">A Unique Bridge</h2>
+            <h2 data-lang="en">A Unique Bridge</h2>
+            <p data-lang="it">Il Ponte del Chiodo, l'ultimo ponte veneziano rimasto senza parapetti medievali.</p>
+            <p data-lang="en">Ponte del Chiodo, the last Venetian bridge without medieval parapets.</p>
+            <span class="btn-link"><span data-lang="it">Prossimamente...</span><span data-lang="en">Coming soon...</span></span>
+        </div>
 
         <div class="card locked">
             <h2 data-lang="it">Buffalo Bill a Venezia</h2>
             <h2 data-lang="en">Buffalo Bill in Venice</h2>
-            <p data-lang="it">Quando il selvaggio West arrivò tra i canali della laguna.</p>
-            <p data-lang="en">When the Wild West arrived among the lagoon canals.</p>
-            <span class="btn-link">
-                <span data-lang="it">Prossimamente...</span>
-                <span data-lang="en">Coming soon...</span>
-            </span>
+            <p data-lang="it">Quando il leggendario West sbarcò tra i canali della Laguna.</p>
+            <p data-lang="en">When the legendary Wild West landed among the lagoon's canals.</p>
+            <span class="btn-link"><span data-lang="it">Prossimamente...</span><span data-lang="en">Coming soon...</span></span>
         </div>
-
     </main>
-
-    <img src="img/guardia_veneziana_matita.png" class="guardia-home" alt="Guardia Veneziana Decorazione">
 
     <script>
         function setLanguage(lang) {
-            // Rimuove le classi precedenti e aggiunge la nuova
-            document.body.classList.remove('lang-it', 'lang-en');
-            document.body.classList.add('lang-' + lang);
-
-            // Aggiorna lo stato dei bottoni
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.toLowerCase() === lang) {
-                    btn.classList.add('active');
-                }
-            });
-
-            // Salva la preferenza nel browser
-            localStorage.setItem('preferredLang', lang);
+            document.body.className = 'lang-' + lang;
+            document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            localStorage.setItem('veneziaLang', lang);
         }
 
-        // Carica la lingua salvata al caricamento della pagina
-        window.onload = () => {
-            const savedLang = localStorage.getItem('preferredLang') || 'it';
-            setLanguage(savedLang);
-        };
+        // Recupera la lingua salvata o usa l'italiano di default
+        const savedLang = localStorage.getItem('veneziaLang') || 'it';
+        setLanguage(savedLang);
     </script>
-
 </body>
 </html>
