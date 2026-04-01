@@ -38,9 +38,31 @@
             text-decoration: none;
         }
 
-        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
         nav a { text-decoration: none; color: #666; font-size: 0.85em; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: #C0392B; }
+
+        /* LANGUAGE SWITCHER */
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+        .lang-btn {
+            background: none;
+            border: 1px solid #ccc;
+            padding: 2px 8px;
+            cursor: pointer;
+            font-size: 0.75em;
+            border-radius: 3px;
+            color: #666;
+            transition: 0.3s;
+        }
+        .lang-btn.active {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
 
         /* HERO SECTION */
         header { text-align: center; margin-bottom: 80px; }
@@ -93,7 +115,15 @@
         .locked { cursor: default; opacity: 0.8; }
         .locked .btn-link { color: #ccc; cursor: not-allowed; }
 
-        /* LA GUARDIA VENEZIANA - BACKGROUND DECORATION */
+        /* GESTIONE VISIBILITÀ LINGUA */
+        [data-lang] { display: none; }
+        body.lang-it [data-lang="it"] { display: block; }
+        body.lang-en [data-lang="en"] { display: block; }
+        /* Inline elements fix */
+        body.lang-it span[data-lang="it"], body.lang-it a[data-lang="it"] { display: inline; }
+        body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"] { display: inline; }
+
+        /* LA GUARDIA VENEZIANA */
         .guardia-home {
             position: fixed;
             bottom: -30px;
@@ -109,128 +139,118 @@
         @media (max-width: 600px) {
             header h1 { font-size: 2.2em; }
             nav { flex-direction: column; gap: 20px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
-<body>
+<body class="lang-it">
 
     <nav>
         <a href="index.html" class="logo">Venezia Invisibile</a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">Segreti</a></li>
-            <li><a href="#">Scorci</a></li>
+            <li><a href="#"><span data-lang="it">Segreti</span><span data-lang="en">Secrets</span></a></li>
+            <li><a href="#"><span data-lang="it">Scorci</span><span data-lang="en">Sights</span></a></li>
+            <li class="lang-switch">
+                <button class="lang-btn active" onclick="setLanguage('it')">IT</button>
+                <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+            </li>
         </ul>
     </nav>
 
     <header>
-        <h1>Oltre la superficie</h1>
-        <p>Storie rimosse, pietre consumate e angoli dimenticati della Serenissima.</p>
+        <h1 data-lang="it">Oltre la superficie</h1>
+        <h1 data-lang="en">Beyond the Surface</h1>
+        
+        <p data-lang="it">Storie rimosse, pietre consumate e angoli dimenticati della Serenissima.</p>
+        <p data-lang="en">Forgotten stories, worn stones, and hidden corners of the Serenissima.</p>
     </header>
 
     <main class="grid">
         <a href="a-little-scratching.html" class="card">
-            <div>
+            <div data-lang="it">
                 <h2>A Little Scratching</h2>
                 <p>La storia delle guardie stanche e delle loro armature che hanno consumato la pietra della Calle degli Albanesi.</p>
             </div>
-            <span class="btn-link">Leggi il segreto →</span>
+            <div data-lang="en">
+                <h2>A Little Scratching</h2>
+                <p>The story of tired guards and their armor that wore down the stone of Calle degli Albanesi.</p>
+            </div>
+            <span class="btn-link">
+                <span data-lang="it">Leggi il segreto →</span>
+                <span data-lang="en">Read the secret →</span>
+            </span>
         </a>
 
         <a href="Stargate.html" class="card">
-            <div>
+            <div data-lang="it">
                 <h2>Stargate</h2>
                 <p>Un'antica soglia di marmo a San Simeon Grando che la leggenda vuole sia un portale verso altre dimensioni.</p>
             </div>
-            <span class="btn-link">Leggi il segreto →</span>
-        </a>
-
-        <a href="A-dangerous-bet.html" class="card">
-            <div>
-                <h2>A Dangerous Bet</h2>
-                <p>La scommessa scolpita nei capitelli di Palazzo dei Camerlenghi tra un uomo e una donna increduli sul Ponte di Rialto.</p>
+            <div data-lang="en">
+                <h2>Stargate</h2>
+                <p>An ancient marble threshold at San Simeon Grando that legend says is a portal to other dimensions.</p>
             </div>
-            <span class="btn-link">Leggi il segreto →</span>
+            <span class="btn-link">
+                <span data-lang="it">Leggi il segreto →</span>
+                <span data-lang="en">Read the secret →</span>
+            </span>
         </a>
 
         <a href="A-matter-of-size.html" class="card">
-            <div>
+            <div data-lang="it">
                 <h2>A Matter of Size</h2>
                 <p>Le rigide tabelle di marmo del mercato di Rialto che ancora oggi ricordano le taglie minime per la vendita del pesce.</p>
             </div>
-            <span class="btn-link">Leggi il segreto →</span>
+            <div data-lang="en">
+                <h2>A Matter of Size</h2>
+                <p>The rigid marble plaques at the Rialto market that still list the minimum sizes for selling fish.</p>
+            </div>
+            <span class="btn-link">
+                <span data-lang="it">Leggi il segreto →</span>
+                <span data-lang="en">Read the secret →</span>
+            </span>
         </a>
 
-        <a href="A-peculiar-note.html" class="card">
-            <div>
-                <h2>A Peculiar Note</h2>
-                <p>Il buco spia del Casinò Venier e i passaggi segreti utilizzati per fughe discrete nel XVIII secolo.</p>
-            </div>
-            <span class="btn-link">Leggi il segreto →</span>
-        </a>
+        <div class="card locked">
+            <h2 data-lang="it">Buffalo Bill a Venezia</h2>
+            <h2 data-lang="en">Buffalo Bill in Venice</h2>
+            <p data-lang="it">Quando il selvaggio West arrivò tra i canali della laguna.</p>
+            <p data-lang="en">When the Wild West arrived among the lagoon canals.</p>
+            <span class="btn-link">
+                <span data-lang="it">Prossimamente...</span>
+                <span data-lang="en">Coming soon...</span>
+            </span>
+        </div>
 
-        <a href="a-perfect-picture.html" class="card">
-            <div>
-                <h2>A Perfect Picture</h2>
-                <p>Scopri il punto esatto in Piazza San Marco per scattare una foto perfettamente allineata con la Basilica.</p>
-            </div>
-            <span class="btn-link">Leggi il segreto →</span>
-        </a>
-
-        <a href="a-special-stairway.html" class="card">
-            <div>
-                <h2>A Special Stairway</h2>
-                <p>La Scala del Bovolo: un capolavoro a chiocciola costruito per essere percorso... a cavallo.</p>
-            </div>
-            <span class="btn-link">Leggi il segreto →</span>
-        </a>
-
-        <a href="a-unique-bridge.html" class="card">
-            <div>
-                <h2>A Unique Bridge</h2>
-                <p>Il Ponte del Chiodo, l'ultimo ponte veneziano rimasto senza parapetti, proprio come nel medioevo.</p>
-            </div>
-            <span class="btn-link">Leggi il segreto →</span>
-        </a>
-        
-        <div class="card locked"><h2>A unique vista</h2><p>Un panorama segreto accessibile solo ai più curiosi.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Buffalo Bill in Venice</h2><p>Quando il selvaggio West arrivò tra i canali della laguna.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Exemplary punishment</h2><p>La giustizia veneziana tra le colonne di Piazza San Marco.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>First public gaming house</h2><p>Il Ridotto: dove Venezia ha inventato il casinò pubblico.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Last chance</h2><p>L'ultima opportunità per i condannati prima della sentenza.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Leaning bell towers</h2><p>I campanili che sfidano la gravità sopra i tetti veneziani.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Love</h2><p>Leggende d'amore sussurrate tra le calli meno frequentate.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Magic doors</h2><p>Soglie cariche di simbolismo e mistero.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Making a virtue of necessity</h2><p>L'ingegno dei veneziani per risolvere i problemi quotidiani.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Mascheroni</h2><p>Le facce mostruose che osservano i passanti dai palazzi.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Odd circles</h2><p>Simboli circolari misteriosi incisi nei pavimenti delle chiese.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Pigeons</h2><p>La lunga storia del rapporto tra Venezia e i suoi volatili.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Seasickness</h2><p>Consigli e aneddoti veneziani sul mal di mare.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Spooky columns</h2><p>Le colonne di Palazzo Ducale cariche di superstizione.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The democratic stone</h2><p>Il luogo dove la voce del popolo veniva ascoltata.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The first aerial bombardment</h2><p>Quando le bombe caddero su Venezia dal cielo nel 1849.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The first woman graduate</h2><p>Elena Lucrezia Cornaro Piscopia: un primato veneziano.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The grilles of the new prisons</h2><p>La vista dei prigionieri attraverso le inferriate dei Piombi.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The hunchback of Rialto</h2><p>Il Gobbo di Rialto e le sue antiche funzioni pubbliche.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The largest canvas painting</h2><p>Il Paradiso del Tintoretto a Palazzo Ducale.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The lived bell tower</h2><p>Storia segreta dell'abitazione all'interno del campanile.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The lucky charm belly</h2><p>Un tocco di fortuna scolpito nella pietra veneziana.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The lucky house</h2><p>Un'abitazione veneziana baciata dalla buona sorte.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The magic courtyard</h2><p>Cortili nascosti che sembrano fuori dal tempo.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The narrowest palace</h2><p>L'architettura estrema per sfruttare ogni centimetro.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The old Lady with the mortar</h2><p>La donna che salvò Venezia con un mortaio di pietra.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The repentant architect</h2><p>La leggenda dell'architetto che chiese perdono per la sua opera.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The secret door</h2><p>Passaggi segreti e accessi privati dei palazzi nobiliari.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The smallest church in Venice</h2><p>Un piccolo scrigno di fede tra le calli.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>The war of punches</h2><p>La storica rivalità tra Castellani e Nicolotti sui ponti.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Venetian Venus</h2><p>La bellezza classica reinterpretata dagli artisti lagunari.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Watch your feet</h2><p>I pericoli e i dettagli nascosti nel selciato veneziano.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Watch your head</h2><p>I sottoportici bassi che richiedono attenzione.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>You mustn't get fat!</h2><p>La calle così stretta che mette alla prova la linea dei passanti.</p><span class="btn-link">Prossimamente...</span></div>
-        <div class="card locked"><h2>Il Ponte del Chiodo</h2><p>L'ultimo testimone di un'antica Venezia senza parapetti.</p><span class="btn-link">Prossimamente...</span></div>
     </main>
 
     <img src="img/guardia_veneziana_matita.png" class="guardia-home" alt="Guardia Veneziana Decorazione">
+
+    <script>
+        function setLanguage(lang) {
+            // Rimuove le classi precedenti e aggiunge la nuova
+            document.body.classList.remove('lang-it', 'lang-en');
+            document.body.classList.add('lang-' + lang);
+
+            // Aggiorna lo stato dei bottoni
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Salva la preferenza nel browser
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Carica la lingua salvata al caricamento della pagina
+        window.onload = () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'it';
+            setLanguage(savedLang);
+        };
+    </script>
 
 </body>
 </html>
