@@ -8,9 +8,8 @@
         body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; max-width: 1200px; margin: auto; padding: 40px 20px; color: #2c3e50; background-color: #f9f9f9; }
         nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         .logo { font-weight: bold; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; color: #2c3e50; }
-        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
-        .lang-btn { border: 1px solid #ccc; background: white; cursor: pointer; padding: 5px 10px; font-size: 0.8em; border-radius: 4px; }
-        .lang-btn.active { background: #2c3e50; color: white; }
+        .lang-btn { border: 1px solid #ccc; background: white; cursor: pointer; padding: 5px 10px; font-size: 0.8em; border-radius: 4px; transition: 0.3s; }
+        .lang-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
 
         header { text-align: center; margin-bottom: 80px; }
         header h1 { font-size: 3.5em; margin-bottom: 10px; font-weight: 300; }
@@ -18,15 +17,15 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card { background: white; padding: 25px; border-radius: 8px; border: 1px solid #eee; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .card:hover { transform: translateY(-10px); border-color: #C0392B; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card h2 { font-size: 1.1em; margin-top: 0; color: #2c3e50; text-transform: capitalize; }
+        .card h2 { font-size: 1.1em; margin-top: 0; color: #2c3e50; }
         .btn-link { color: #C0392B; font-weight: bold; font-size: 0.75em; text-transform: uppercase; margin-top: auto; padding-top: 15px; }
 
         /* Logic Multilingua */
         [data-lang] { display: none; }
         body.lang-it [data-lang="it"] { display: block; }
         body.lang-en [data-lang="en"] { display: block; }
-        body.lang-it span[data-lang="it"] { display: inline; }
-        body.lang-en span[data-lang="en"] { display: inline; }
+        body.lang-it span[data-lang="it"], body.lang-it h2[data-lang="it"] { display: block; }
+        body.lang-en span[data-lang="en"], body.lang-en h2[data-lang="en"] { display: block; }
     </style>
 </head>
 <body class="lang-it">
@@ -47,53 +46,173 @@
     </header>
 
     <main class="grid">
-        <a href="a-dangerous-bet.html" class="card"><h2>A dangerous bet</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-little-scratching.html" class="card"><h2>A little scratching</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-matter-of-size.html" class="card"><h2>A matter of size</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-peculiar-note.html" class="card"><h2>A peculiar note</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-perfect-picture.html" class="card"><h2>A perfect picture</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="a-dangerous-bet.html" class="card">
+            <h2 data-lang="it">Una scommessa pericolosa</h2><h2 data-lang="en">A dangerous bet</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="a-little-scratching.html" class="card">
+            <h2 data-lang="it">Un piccolo graffio</h2><h2 data-lang="en">A little scratching</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="a-matter-of-size.html" class="card">
+            <h2 data-lang="it">Una questione di centimetri</h2><h2 data-lang="en">A matter of size</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="a-peculiar-note.html" class="card">
+            <h2 data-lang="it">Una nota peculiare</h2><h2 data-lang="en">A peculiar note</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="a-perfect-picture.html" class="card">
+            <h2 data-lang="it">Una foto perfetta</h2><h2 data-lang="en">A perfect picture</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
 
-        <a href="a-special-stairway.html" class="card"><h2>A special stairway</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-unique-bridge.html" class="card"><h2>A unique bridge</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-unique-vista.html" class="card"><h2>A unique vista</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="buffalo-bill-in-venice.html" class="card"><h2>Buffalo Bill in Venice</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="exemplary-punishment.html" class="card"><h2>Exemplary punishment</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="a-special-stairway.html" class="card">
+            <h2 data-lang="it">Una scala speciale</h2><h2 data-lang="en">A special stairway</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="a-unique-bridge.html" class="card">
+            <h2 data-lang="it">Un ponte unico</h2><h2 data-lang="en">A unique bridge</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="a-unique-vista.html" class="card">
+            <h2 data-lang="it">Una vista unica</h2><h2 data-lang="en">A unique vista</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="buffalo-bill-in-venice.html" class="card">
+            <h2 data-lang="it">Buffalo Bill a Venezia</h2><h2 data-lang="en">Buffalo Bill in Venice</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="exemplary-punishment.html" class="card">
+            <h2 data-lang="it">Punizione esemplare</h2><h2 data-lang="en">Exemplary punishment</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
 
-        <a href="first-public-gaming-house.html" class="card"><h2>First public gaming house</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="last-chance.html" class="card"><h2>Last chance</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="leaning-bell-towers.html" class="card"><h2>Leaning bell towers</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="love.html" class="card"><h2>Love</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="magic-doors.html" class="card"><h2>Magic doors</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="first-public-gaming-house.html" class="card">
+            <h2 data-lang="it">Il primo casinò pubblico</h2><h2 data-lang="en">First public gaming house</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="last-chance.html" class="card">
+            <h2 data-lang="it">L'ultima occasione</h2><h2 data-lang="en">Last chance</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="leaning-bell-towers.html" class="card">
+            <h2 data-lang="it">Campanili pendenti</h2><h2 data-lang="en">Leaning bell towers</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="love.html" class="card">
+            <h2 data-lang="it">Amore</h2><h2 data-lang="en">Love</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="magic-doors.html" class="card">
+            <h2 data-lang="it">Porte magiche</h2><h2 data-lang="en">Magic doors</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
 
-        <a href="making-a-virtue-of-necessity.html" class="card"><h2>Making a virtue of necessity</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="mascheroni.html" class="card"><h2>Mascheroni</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="odd-circles.html" class="card"><h2>Odd circles</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="pigeons.html" class="card"><h2>Pigeons</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="seasickness.html" class="card"><h2>Seasickness</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="making-a-virtue-of-necessity.html" class="card">
+            <h2 data-lang="it">Far di necessità virtù</h2><h2 data-lang="en">Making a virtue of necessity</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="mascheroni.html" class="card">
+            <h2 data-lang="it">Mascheroni</h2><h2 data-lang="en">Mascheroni</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="odd-circles.html" class="card">
+            <h2 data-lang="it">Cerchi insoliti</h2><h2 data-lang="en">Odd circles</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="pigeons.html" class="card">
+            <h2 data-lang="it">Piccioni</h2><h2 data-lang="en">Pigeons</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="seasickness.html" class="card">
+            <h2 data-lang="it">Mal di mare</h2><h2 data-lang="en">Seasickness</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
 
-        <a href="spooky-columns.html" class="card"><h2>Spooky columns</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="stargate.html" class="card"><h2>Stargate</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-democratic-stone.html" class="card"><h2>The democratic stone</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-first-aerial-bombardment.html" class="card"><h2>The first aerial bombardment</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-first-woman-graduate.html" class="card"><h2>The first woman graduate</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="spooky-columns.html" class="card">
+            <h2 data-lang="it">Colonne inquietanti</h2><h2 data-lang="en">Spooky columns</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="stargate.html" class="card">
+            <h2 data-lang="it">Stargate</h2><h2 data-lang="en">Stargate</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-democratic-stone.html" class="card">
+            <h2 data-lang="it">La pietra democratica</h2><h2 data-lang="en">The democratic stone</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-first-aerial-bombardment.html" class="card">
+            <h2 data-lang="it">Il primo bombardamento aereo</h2><h2 data-lang="en">The first aerial bombardment</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-first-woman-graduate.html" class="card">
+            <h2 data-lang="it">La prima donna laureata</h2><h2 data-lang="en">The first woman graduate</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
 
-        <a href="the-grilles-of-the-new-prisons.html" class="card"><h2>The grilles of the new prisons</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-hunchback-of-rialto.html" class="card"><h2>The hunchback of Rialto</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-largest-canvas-painting.html" class="card"><h2>The largest canvas painting</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-lived-bell-tower.html" class="card"><h2>The lived bell tower</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-lucky-charm-belly.html" class="card"><h2>The lucky charm belly</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="the-grilles-of-the-new-prisons.html" class="card">
+            <h2 data-lang="it">Le grate delle Prigioni Nuove</h2><h2 data-lang="en">The grilles of the new prisons</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-hunchback-of-rialto.html" class="card">
+            <h2 data-lang="it">Il Gobbo di Rialto</h2><h2 data-lang="en">The hunchback of Rialto</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-largest-canvas-painting.html" class="card">
+            <h2 data-lang="it">La tela più grande del mondo</h2><h2 data-lang="en">The largest canvas painting</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-lived-bell-tower.html" class="card">
+            <h2 data-lang="it">Il campanile abitato</h2><h2 data-lang="en">The lived bell tower</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-lucky-charm-belly.html" class="card">
+            <h2 data-lang="it">La pancia portafortuna</h2><h2 data-lang="en">The lucky charm belly</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
 
-        <a href="the-lucky-house.html" class="card"><h2>The lucky house</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-magic-courtyard.html" class="card"><h2>The magic courtyard</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-narrowest-palace.html" class="card"><h2>The narrowest palace</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-old-lady-with-the-mortar.html" class="card"><h2>The old lady with the mortar</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-repentant-architect.html" class="card"><h2>The repentant architect</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="the-lucky-house.html" class="card">
+            <h2 data-lang="it">La casa fortunata</h2><h2 data-lang="en">The lucky house</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-magic-courtyard.html" class="card">
+            <h2 data-lang="it">La corte magica</h2><h2 data-lang="en">The magic courtyard</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-narrowest-palace.html" class="card">
+            <h2 data-lang="it">Il palazzo più stretto</h2><h2 data-lang="en">The narrowest palace</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-old-lady-with-the-mortar.html" class="card">
+            <h2 data-lang="it">La vecchia col mortaio</h2><h2 data-lang="en">The old lady with the mortar</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-repentant-architect.html" class="card">
+            <h2 data-lang="it">L'architetto pentito</h2><h2 data-lang="en">The repentant architect</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
 
-        <a href="the-secret-door.html" class="card"><h2>The secret door</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-smallest-church.html" class="card"><h2>The smallest church in Venice</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-war-of-punches.html" class="card"><h2>The war of punches</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="venetian-venus.html" class="card"><h2>Venetian Venus</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="you-mustnt-get-fat.html" class="card"><h2>You mustn't get fat!</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+        <a href="the-secret-door.html" class="card">
+            <h2 data-lang="it">La porta segreta</h2><h2 data-lang="en">The secret door</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-smallest-church.html" class="card">
+            <h2 data-lang="it">La chiesa più piccola</h2><h2 data-lang="en">The smallest church in Venice</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="the-war-of-punches.html" class="card">
+            <h2 data-lang="it">La guerra dei pugni</h2><h2 data-lang="en">The war of punches</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="venetian-venus.html" class="card">
+            <h2 data-lang="it">Venere Veneziana</h2><h2 data-lang="en">Venetian Venus</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
+        <a href="you-mustnt-get-fat.html" class="card">
+            <h2 data-lang="it">Vietato ingrassare!</h2><h2 data-lang="en">You mustn't get fat!</h2>
+            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
+        </a>
     </main>
 
     <script>
