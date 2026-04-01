@@ -1,138 +1,102 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Matter of Size - Venezia Segreta</title>
+    <title>Venezia Invisibile - Segreto</title>
     <style>
-        body { 
-            font-family: sans-serif; 
-            line-height: 1.6; 
-            max-width: 800px; 
-            margin: auto; 
-            padding: 20px; 
-            color: #333; 
-            position: relative; 
-            overflow-x: hidden; 
-            background-color: #fff;
-        }
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; color: #333; background-color: #fff; position: relative; }
+        
+        /* Header con Navigazione e Cambio Lingua */
+        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .logo { font-weight: bold; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; color: #2c3e50; font-size: 0.9em; }
+        .lang-btn { border: 1px solid #ccc; background: white; cursor: pointer; padding: 5px 10px; font-size: 0.8em; border-radius: 4px; }
+        .lang-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
 
-        .footer-nav {
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
+        h1 { color: #2c3e50; font-size: 1.8em; margin-top: 30px; }
+        img { width: 60%; height: auto; max-width: 100%; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        .highlight { background: #fcf8e3; padding: 15px; border-left: 5px solid #faf2cc; margin: 20px 0; font-size: 0.95em; }
 
-        .btn-back {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #2c3e50;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 1em;
-            transition: background 0.3s;
-        }
+        /* Mappa */
+        .map-container { margin: 30px 0; border-radius: 8px; overflow: hidden; border: 1px solid #eee; }
+        .map-container iframe { width: 100%; height: 250px; border: 0; display: block; }
+        .map-link { display: block; text-align: center; padding: 10px; background: #f9f9f9; color: #2c3e50; text-decoration: none; font-size: 0.9em; font-weight: bold; border-top: 1px solid #eee; }
+
+        /* Footer */
+        .footer-nav { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; }
+        .btn-back { display: inline-block; padding: 12px 25px; background-color: #2c3e50; color: white; text-decoration: none; border-radius: 4px; transition: 0.3s; }
         .btn-back:hover { background-color: #C0392B; }
 
-        img { 
-            width: 50%; 
-            height: auto; 
-            max-width: 100%;
-            border-radius: 8px; 
-            margin: 0 auto 20px auto; 
-            display: block;
-            image-rendering: -webkit-optimize-contrast; 
-        }
+        /* Logica Lingue */
+        [data-lang] { display: none; }
+        body.lang-it [data-lang="it"] { display: block; }
+        body.lang-en [data-lang="en"] { display: block; }
+        body.lang-it span[data-lang="it"] { display: inline; }
+        body.lang-en span[data-lang="en"] { display: inline; }
 
-        h1 { color: #2c3e50; font-size: 1.8em; }
-        
-        .highlight { 
-            background: #fcf8e3; 
-            padding: 15px; 
-            border-left: 5px solid #faf2cc; 
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
-
-        .map-container {
-            margin: 30px 0;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #eee;
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 250px;
-            border: 0;
-            display: block;
-        }
-        .map-link {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            background: #f9f9f9;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: bold;
-            border-top: 1px solid #eee;
-        }
-
-        .guardia-veneziana {
-            position: absolute; 
-            bottom: 100px;
-            right: -20px;       
-            width: 150px; 
-            opacity: 0.4; 
-            z-index: -1;          
-            pointer-events: none;
-            transform: rotate(25deg); 
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; }
-            img { width: 80%; } 
-            .guardia-veneziana { width: 100px; opacity: 0.2; }
-        }
+        @media (max-width: 600px) { img { width: 90%; } h1 { font-size: 1.5em; } }
     </style>
 </head>
-<body>
+<body class="lang-it">
 
-    <h1>A Matter of Size</h1>
-    
-    <p>In Venice, a judiciary body was in charge of controlling and ensuring that the minimum sizes for sale were respected. The Serenissima Republic of Venice was particularly strict with those selling undersized fish.</p>
-    
-    <img src="img/ams.jpg" alt="Rialto Fish Market" loading="lazy">
+    <nav>
+        <a href="index.html" class="logo">VENEZIA INVISIBILE</a>
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-it" onclick="setLanguage('it')">IT</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+        </div>
+    </nav>
 
-    <div class="highlight">
-        <p>Even today, in the Rialto fish market, you can see a white marble plaque listing the minimum lengths allowed for the sale of fish.</p> 
+    <h1 data-lang="it">TITOLO IN ITALIANO</h1>
+    <h1 data-lang="en">ENGLISH TITLE</h1>
+
+    <div data-lang="it">
+        <p>Inserisci qui la descrizione dell'introduzione in italiano...</p>
+    </div>
+    <div data-lang="en">
+        <p>Insert here the introduction description in English...</p>
     </div>
 
-    <img src="img/ams4.jpg" alt="Fish Size Plaque" loading="lazy">
+    <img src="img/ams.jpg" alt="Venezia" loading="lazy">
 
-    <p>Even more interesting and curious is the engraving on the column of the portico of the Church of San Giacomo, also in Rialto, which displays the minimum size requirements for both fish and mussels.</p>
+    <div class="highlight">
+        <p data-lang="it">Curiosità o domanda specifica in italiano?</p>
+        <p data-lang="en">Curiosity or specific question in English?</p>
+    </div>
 
-    <img src="img/ams2.jpg" alt="Column Engravings" loading="lazy">
+    <div data-lang="it">
+        <p>Spiegazione finale del segreto in italiano...</p>
+    </div>
+    <div data-lang="en">
+        <p>Final explanation of the secret in English...</p>
+    </div>
+
+    <img src="img/ams2.jpg" alt="Dettaglio" loading="lazy">
 
     <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m1!1s0x477eb1c28c89133b:0x5f9638f292d346b0!2sCampo+S.+Giacomo+di+Rialto!5e0!3m2!1sit!2sit!4v1710000000000" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-        <a href="https://maps.app.goo.gl/B9XyLREz8XJkYmD2A" target="_blank" class="map-link">
-            📍 Ottieni indicazioni per Campo San Giacomo di Rialto
+        <iframe src="INCOLLA_QUI_LINK_EMBED_GOOGLE_MAPS" allowfullscreen="" loading="lazy"></iframe>
+        <a href="INCOLLA_QUI_LINK_DIRETTO_MAPS" target="_blank" class="map-link">
+            📍 <span data-lang="it">Ottieni indicazioni</span><span data-lang="en">Get directions</span>
         </a>
     </div>
 
     <div class="footer-nav">
-        <a href="index.html" class="btn-back">← Torna alla Home</a>
+        <a href="index.html" class="btn-back">
+            <span data-lang="it">← Torna alla Home</span>
+            <span data-lang="en">← Back to Home</span>
+        </a>
     </div>
 
+    <script>
+        function setLanguage(lang) {
+            document.body.className = 'lang-' + lang;
+            document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            localStorage.setItem('veneziaLang', lang);
+        }
+        // Inizializza lingua
+        setLanguage(localStorage.getItem('veneziaLang') || 'it');
+    </script>
 </body>
 </html>
