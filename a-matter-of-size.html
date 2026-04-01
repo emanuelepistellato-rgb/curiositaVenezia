@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venezia Invisibile - Segreto</title>
+    <title>Venezia Invisibile - A Matter of Size</title>
     <style>
         body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; color: #333; background-color: #fff; position: relative; }
         
@@ -48,36 +48,40 @@
         </div>
     </nav>
 
-    <h1 data-lang="it">TITOLO IN ITALIANO</h1>
-    <h1 data-lang="en">ENGLISH TITLE</h1>
+    <h1 data-lang="it">Una questione di centimetri</h1>
+    <h1 data-lang="en">A Matter of Size</h1>
 
     <div data-lang="it">
-        <p>Inserisci qui la descrizione dell'introduzione in italiano...</p>
+        <p>A Venezia, un organo giudiziario era incaricato di controllare e garantire che venissero rispettate le taglie minime per la vendita.</p>
+        <p>La Repubblica della Serenissima era particolarmente severa con chi vendeva pesce sottomisura.</p>
     </div>
     <div data-lang="en">
-        <p>Insert here the introduction description in English...</p>
+        <p>In Venice, a judiciary body was in charge of controlling and ensuring that the minimum sizes for sale were respected.</p>
+        <p>The Serenissima Republic of Venice was particularly strict with those selling undersized fish.</p>
     </div>
 
-    <img src="img/ams.jpg" alt="Venezia" loading="lazy">
+    <img src="img/ams.jpg" alt="Campo della Pescheria Rialto" loading="lazy">
 
     <div class="highlight">
-        <p data-lang="it">Curiosità o domanda specifica in italiano?</p>
-        <p data-lang="en">Curiosity or specific question in English?</p>
+        <p data-lang="it">Ancora oggi, nel mercato del pesce di Rialto, si può vedere una lapide di marmo bianco che elenca le lunghezze minime consentite per la vendita.</p>
+        <p data-lang="en">Even today, in the Rialto fish market, you can see a white marble plaque listing the minimum lengths allowed for the sale of fish.</p>
     </div>
+
+    <img src="img/ams4.jpg" alt="Tabelle taglie pesce Rialto" loading="lazy">
 
     <div data-lang="it">
-        <p>Spiegazione finale del segreto in italiano...</p>
+        <p>Ancora più interessante e curioso è l'incisione sulla colonna del portico della Chiesa di San Giacomo, sempre a Rialto, che riporta i requisiti di dimensione minima sia per i pesci che per i mitili.</p>
     </div>
     <div data-lang="en">
-        <p>Final explanation of the secret in English...</p>
+        <p>Even more interesting and curious is the engraving on the column of the portico of the Church of San Giacomo, also in Rialto, which displays the minimum size requirements for both fish and mussels.</p>
     </div>
 
-    <img src="img/ams2.jpg" alt="Dettaglio" loading="lazy">
+    <img src="img/ams2.jpg" alt="Dettaglio colonna San Giacomo" loading="lazy">
 
     <div class="map-container">
-        <iframe src="INCOLLA_QUI_LINK_EMBED_GOOGLE_MAPS" allowfullscreen="" loading="lazy"></iframe>
-        <a href="INCOLLA_QUI_LINK_DIRETTO_MAPS" target="_blank" class="map-link">
-            📍 <span data-lang="it">Ottieni indicazioni</span><span data-lang="en">Get directions</span>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2799.418731362879!2d12.333555276856557!3d45.4391903356499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1c377484649%3A0xe7261904e528413a!2sPescheria%20di%20Rialto!5e0!3m2!1sit!2sit!4v1715851234567!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
+        <a href="https://maps.app.goo.gl/uX3f295FqS8hYqU98" target="_blank" class="map-link">
+            📍 <span data-lang="it">Ottieni indicazioni per Rialto</span><span data-lang="en">Get directions to Rialto</span>
         </a>
     </div>
 
@@ -95,7 +99,6 @@
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             localStorage.setItem('veneziaLang', lang);
         }
-        // Inizializza lingua
         setLanguage(localStorage.getItem('veneziaLang') || 'it');
     </script>
 </body>
