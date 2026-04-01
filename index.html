@@ -15,10 +15,69 @@
         header h1 { font-size: 3.5em; margin-bottom: 10px; font-weight: 300; }
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: white; padding: 25px; border-radius: 8px; border: 1px solid #eee; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .card { background: white; padding: 25px; border-radius: 8px; border: 1px solid #eee; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; overflow: hidden; }
         .card:hover { transform: translateY(-10px); border-color: #C0392B; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .card h2 { font-size: 1.1em; margin-top: 0; color: #2c3e50; }
         .btn-link { color: #C0392B; font-weight: bold; font-size: 0.75em; text-transform: uppercase; margin-top: auto; padding-top: 15px; }
+
+        /* --- LOGICA PAYWALL --- */
+        .card.locked { cursor: pointer; }
+        
+        /* Effetto sfocato per i contenuti bloccati */
+        .card.locked h2, .card.locked .btn-link {
+            filter: blur(3px);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Overlay con lucchetto */
+        .lock-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(44, 62, 80, 0.85);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        /* Modal di Acquisto */
+        #pay-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+        }
+        .btn-buy {
+            display: inline-block;
+            background: #C0392B;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .close-modal { position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 1.5em; }
 
         /* Logic Multilingua */
         [data-lang] { display: none; }
@@ -66,7 +125,6 @@
             <h2 data-lang="it">Una foto perfetta</h2><h2 data-lang="en">A perfect picture</h2>
             <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
         </a>
-
         <a href="a-special-stairway.html" class="card">
             <h2 data-lang="it">Una scala speciale</h2><h2 data-lang="en">A special stairway</h2>
             <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
@@ -79,143 +137,37 @@
             <h2 data-lang="it">Una vista unica</h2><h2 data-lang="en">A unique vista</h2>
             <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
         </a>
-        <a href="buffalo-bill-in-venice.html" class="card">
+
+        <a href="buffalo-bill-in-venice.html" class="card locked">
+            <div class="lock-badge">🔒 <span data-lang="it">Premium</span><span data-lang="en">Premium</span></div>
             <h2 data-lang="it">Buffalo Bill a Venezia</h2><h2 data-lang="en">Buffalo Bill in Venice</h2>
             <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
         </a>
-        <a href="exemplary-punishment.html" class="card">
+
+        <a href="exemplary-punishment.html" class="card locked">
+            <div class="lock-badge">🔒 <span data-lang="it">Premium</span><span data-lang="en">Premium</span></div>
             <h2 data-lang="it">Punizione esemplare</h2><h2 data-lang="en">Exemplary punishment</h2>
             <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
         </a>
 
-        <a href="first-public-gaming-house.html" class="card">
-            <h2 data-lang="it">Il primo casinò pubblico</h2><h2 data-lang="en">First public gaming house</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="last-chance.html" class="card">
-            <h2 data-lang="it">L'ultima occasione</h2><h2 data-lang="en">Last chance</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="leaning-bell-towers.html" class="card">
-            <h2 data-lang="it">Campanili pendenti</h2><h2 data-lang="en">Leaning bell towers</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="love.html" class="card">
-            <h2 data-lang="it">Amore</h2><h2 data-lang="en">Love</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="magic-doors.html" class="card">
-            <h2 data-lang="it">Porte magiche</h2><h2 data-lang="en">Magic doors</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
+        </main>
 
-        <a href="making-a-virtue-of-necessity.html" class="card">
-            <h2 data-lang="it">Far di necessità virtù</h2><h2 data-lang="en">Making a virtue of necessity</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="mascheroni.html" class="card">
-            <h2 data-lang="it">Mascheroni</h2><h2 data-lang="en">Mascheroni</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="odd-circles.html" class="card">
-            <h2 data-lang="it">Cerchi insoliti</h2><h2 data-lang="en">Odd circles</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="pigeons.html" class="card">
-            <h2 data-lang="it">Piccioni</h2><h2 data-lang="en">Pigeons</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="seasickness.html" class="card">
-            <h2 data-lang="it">Mal di mare</h2><h2 data-lang="en">Seasickness</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-
-        <a href="spooky-columns.html" class="card">
-            <h2 data-lang="it">Colonne inquietanti</h2><h2 data-lang="en">Spooky columns</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="stargate.html" class="card">
-            <h2 data-lang="it">Stargate</h2><h2 data-lang="en">Stargate</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-democratic-stone.html" class="card">
-            <h2 data-lang="it">La pietra democratica</h2><h2 data-lang="en">The democratic stone</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-first-aerial-bombardment.html" class="card">
-            <h2 data-lang="it">Il primo bombardamento aereo</h2><h2 data-lang="en">The first aerial bombardment</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-first-woman-graduate.html" class="card">
-            <h2 data-lang="it">La prima donna laureata</h2><h2 data-lang="en">The first woman graduate</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-
-        <a href="the-grilles-of-the-new-prisons.html" class="card">
-            <h2 data-lang="it">Le grate delle Prigioni Nuove</h2><h2 data-lang="en">The grilles of the new prisons</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-hunchback-of-rialto.html" class="card">
-            <h2 data-lang="it">Il Gobbo di Rialto</h2><h2 data-lang="en">The hunchback of Rialto</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-largest-canvas-painting.html" class="card">
-            <h2 data-lang="it">La tela più grande del mondo</h2><h2 data-lang="en">The largest canvas painting</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-lived-bell-tower.html" class="card">
-            <h2 data-lang="it">Il campanile abitato</h2><h2 data-lang="en">The lived bell tower</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-lucky-charm-belly.html" class="card">
-            <h2 data-lang="it">La pancia portafortuna</h2><h2 data-lang="en">The lucky charm belly</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-
-        <a href="the-lucky-house.html" class="card">
-            <h2 data-lang="it">La casa fortunata</h2><h2 data-lang="en">The lucky house</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-magic-courtyard.html" class="card">
-            <h2 data-lang="it">La corte magica</h2><h2 data-lang="en">The magic courtyard</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-narrowest-palace.html" class="card">
-            <h2 data-lang="it">Il palazzo più stretto</h2><h2 data-lang="en">The narrowest palace</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-old-lady-with-the-mortar.html" class="card">
-            <h2 data-lang="it">La vecchia col mortaio</h2><h2 data-lang="en">The old lady with the mortar</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-repentant-architect.html" class="card">
-            <h2 data-lang="it">L'architetto pentito</h2><h2 data-lang="en">The repentant architect</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-
-        <a href="the-secret-door.html" class="card">
-            <h2 data-lang="it">La porta segreta</h2><h2 data-lang="en">The secret door</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-smallest-church.html" class="card">
-            <h2 data-lang="it">La chiesa più piccola</h2><h2 data-lang="en">The smallest church in Venice</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="the-war-of-punches.html" class="card">
-            <h2 data-lang="it">La guerra dei pugni</h2><h2 data-lang="en">The war of punches</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="venetian-venus.html" class="card">
-            <h2 data-lang="it">Venere Veneziana</h2><h2 data-lang="en">Venetian Venus</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-        <a href="you-mustnt-get-fat.html" class="card">
-            <h2 data-lang="it">Vietato ingrassare!</h2><h2 data-lang="en">You mustn't get fat!</h2>
-            <span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span>
-        </a>
-    </main>
+    <div id="pay-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 data-lang="it">Sblocca tutti i segreti</h2>
+            <h2 data-lang="en">Unlock all secrets</h2>
+            <p data-lang="it">Ottieni accesso immediato alle 40 storie complete e alla mappa interattiva.</p>
+            <p data-lang="en">Get instant access to all 40 stories and the interactive map.</p>
+            <a href="IL_TUO_LINK_STRIPE_O_PAYPAL" class="btn-buy">
+                <span data-lang="it">Sblocca ora - €5.00</span>
+                <span data-lang="en">Unlock now - €5.00</span>
+            </a>
+        </div>
+    </div>
 
     <script>
+        // Gestione Lingua
         function setLanguage(lang) {
             document.body.className = 'lang-' + lang;
             document.getElementById('btn-it').classList.toggle('active', lang === 'it');
@@ -224,6 +176,28 @@
         }
         const saved = localStorage.getItem('veneziaLang') || 'it';
         setLanguage(saved);
+
+        // Gestione Paywall
+        const modal = document.getElementById('pay-modal');
+        
+        // Seleziona tutti i riquadri bloccati
+        document.querySelectorAll('.card.locked').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Impedisce di andare alla pagina
+                e.preventDefault();
+                // Mostra il modal di acquisto
+                modal.style.display = 'flex';
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Chiudi se clicchi fuori dal modal
+        window.onclick = function(event) {
+            if (event.target == modal) closeModal();
+        }
     </script>
 </body>
 </html>
