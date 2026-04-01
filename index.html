@@ -4,40 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venezia Invisibile - 40 Segreti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; max-width: 1200px; margin: auto; padding: 40px 20px; color: #2c3e50; background-color: #f9f9f9; }
-        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .logo { font-weight: bold; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; color: #2c3e50; }
-        .lang-btn { border: 1px solid #ccc; background: white; cursor: pointer; padding: 5px 10px; font-size: 0.8em; border-radius: 4px; transition: 0.3s; }
-        .lang-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
+        :root {
+            --primary: #C0392B;
+            --dark: #1a1a1a;
+            --text: #2c3e50;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
 
-        header { text-align: center; margin-bottom: 80px; }
-        header h1 { font-size: 3.5em; margin-bottom: 10px; font-weight: 300; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            margin: auto; 
+            padding: 0; 
+            color: var(--text); 
+            background-color: var(--bg); 
+        }
+
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo { 
+            font-family: 'Playfair Display', serif;
+            font-weight: 800; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            text-decoration: none; 
+            color: var(--dark); 
+            font-size: 1.2rem;
+        }
+
+        .lang-switch { display: flex; gap: 5px; }
+        .lang-btn { 
+            border: 1px solid #ddd; 
+            background: transparent; 
+            cursor: pointer; 
+            padding: 6px 12px; 
+            font-size: 0.75em; 
+            border-radius: 20px; 
+            transition: var(--transition); 
+        }
+        .lang-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
+
+        header { 
+            text-align: center; 
+            padding: 100px 20px; 
+            background: linear-gradient(135deg, #fff 0%, #ebebeb 100%);
+        }
+        header h1 { 
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            margin-bottom: 20px; 
+            font-weight: 700; 
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+        header p { font-size: 1.2rem; opacity: 0.7; max-width: 600px; margin: auto; font-weight: 300; }
+
+        .container { max-width: 1300px; margin: -50px auto 100px; padding: 0 20px; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
+
+        .card { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 24px; 
+            text-decoration: none; 
+            color: inherit; 
+            display: flex; 
+            flex-direction: column; 
+            transition: var(--transition); 
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1); 
+        }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: white; padding: 25px; border-radius: 8px; border: 1px solid #eee; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; overflow: hidden; }
-        .card:hover { transform: translateY(-10px); border-color: #C0392B; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card h2 { font-size: 1.1em; margin-top: 0; color: #2c3e50; }
-        .btn-link { color: #C0392B; font-weight: bold; font-size: 0.75em; text-transform: uppercase; margin-top: auto; padding-top: 15px; }
+        .card:hover::before { transform: scaleX(1); }
 
-        /* --- STILI PAYWALL --- */
-        .card.locked { cursor: pointer; }
-        .card.locked h2, .card.locked .btn-link { filter: blur(3px); opacity: 0.6; pointer-events: none; }
-        .lock-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(44, 62, 80, 0.9); color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.8em; font-weight: bold; z-index: 5; display: flex; align-items: center; gap: 8px; }
+        .card h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-top: 0; color: var(--dark); line-height: 1.3; }
+        
+        .btn-link { 
+            color: var(--primary); 
+            font-weight: 700; 
+            font-size: 0.8em; 
+            text-transform: uppercase; 
+            margin-top: auto; 
+            padding-top: 20px;
+            letter-spacing: 1px;
+        }
 
-        /* MODAL */
-        #pay-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: white; padding: 40px; border-radius: 12px; max-width: 450px; text-align: center; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .btn-buy { display: inline-block; background: #C0392B; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; transition: 0.3s; }
-        .btn-buy:hover { background: #E74C3C; }
-        .close-modal { position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 1.5em; color: #999; }
+        /* PAYWALL */
+        .card.locked { background: #fdfdfd; }
+        .card.locked h2, .card.locked .btn-link { filter: blur(4px); opacity: 0.4; }
+        
+        .lock-badge { 
+            position: absolute; 
+            top: 20px; right: 20px;
+            background: var(--dark); 
+            color: white; 
+            padding: 6px 14px; 
+            border-radius: 30px; 
+            font-size: 0.7em; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
+        }
 
-        /* Multilingua */
+        #pay-modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(8px);
+            z-index: 1000; justify-content: center; align-items: center; padding: 20px; 
+        }
+        .modal-content { 
+            background: white; padding: 50px; border-radius: 32px; 
+            max-width: 400px; text-align: center; position: relative; 
+        }
+        .btn-buy { 
+            display: block; background: var(--primary); color: white; padding: 20px; 
+            text-decoration: none; border-radius: 16px; margin-top: 30px; 
+            font-weight: 800; transition: var(--transition); font-size: 1.1rem;
+        }
+        .close-modal { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 1.5em; color: #ccc; }
+
         [data-lang] { display: none; }
         body.lang-it [data-lang="it"] { display: block; }
         body.lang-en [data-lang="en"] { display: block; }
-        body.lang-it span[data-lang="it"], body.lang-it h2[data-lang="it"] { display: block; }
-        body.lang-en span[data-lang="en"], body.lang-en h2[data-lang="en"] { display: block; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body class="lang-it">
@@ -57,61 +189,61 @@
         <p data-lang="en">40 forgotten stories and hidden corners of the Serenissima.</p>
     </header>
 
-    <main class="grid">
-        <a href="a-dangerous-bet.html" class="card"><h2 data-lang="it">Una scommessa pericolosa</h2><h2 data-lang="en">A dangerous bet</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-little-scratching.html" class="card"><h2 data-lang="it">Un piccolo graffio</h2><h2 data-lang="en">A little scratching</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-matter-of-size.html" class="card"><h2 data-lang="it">Una questione di centimetri</h2><h2 data-lang="en">A matter of size</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-peculiar-note.html" class="card"><h2 data-lang="it">Una nota peculiare</h2><h2 data-lang="en">A peculiar note</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-perfect-picture.html" class="card"><h2 data-lang="it">Una foto perfetta</h2><h2 data-lang="en">A perfect picture</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-special-stairway.html" class="card"><h2 data-lang="it">Una scala speciale</h2><h2 data-lang="en">A special stairway</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-unique-bridge.html" class="card"><h2 data-lang="it">Un ponte unico</h2><h2 data-lang="en">A unique bridge</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="a-unique-vista.html" class="card"><h2 data-lang="it">Una vista unica</h2><h2 data-lang="en">A unique vista</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
+    <div class="container">
+        <main class="grid">
+            <a href="a-dangerous-bet.html" class="card"><h2 data-lang="it">Una scommessa pericolosa</h2><h2 data-lang="en">A dangerous bet</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
+            <a href="a-little-scratching.html" class="card"><h2 data-lang="it">Un piccolo graffio</h2><h2 data-lang="en">A little scratching</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
+            <a href="a-matter-of-size.html" class="card"><h2 data-lang="it">Una questione di centimetri</h2><h2 data-lang="en">A matter of size</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
+            <a href="a-peculiar-note.html" class="card"><h2 data-lang="it">Una nota peculiare</h2><h2 data-lang="en">A peculiar note</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
+            <a href="a-perfect-picture.html" class="card"><h2 data-lang="it">Una foto perfetta</h2><h2 data-lang="en">A perfect picture</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
+            <a href="a-special-stairway.html" class="card"><h2 data-lang="it">Una scala speciale</h2><h2 data-lang="en">A special stairway</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
+            <a href="a-unique-bridge.html" class="card"><h2 data-lang="it">Un ponte unico</h2><h2 data-lang="en">A unique bridge</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
+            <a href="a-unique-vista.html" class="card"><h2 data-lang="it">Una vista unica</h2><h2 data-lang="en">A unique vista</h2><span class="btn-link" data-lang="it">Esplora →</span><span class="btn-link" data-lang="en">Explore →</span></a>
 
-        <a href="buffalo-bill-in-venice.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Buffalo Bill a Venezia</h2><h2 data-lang="en">Buffalo Bill in Venice</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="exemplary-punishment.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Punizione esemplare</h2><h2 data-lang="en">Exemplary punishment</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="first-public-gaming-house.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il primo casinò pubblico</h2><h2 data-lang="en">First public gaming house</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="last-chance.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">L'ultima occasione</h2><h2 data-lang="en">Last chance</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="leaning-bell-towers.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Campanili pendenti</h2><h2 data-lang="en">Leaning bell towers</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="love.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Amore</h2><h2 data-lang="en">Love</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="magic-doors.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Porte magiche</h2><h2 data-lang="en">Magic doors</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="making-a-virtue-of-necessity.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Far di necessità virtù</h2><h2 data-lang="en">Making a virtue of necessity</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="mascheroni.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Mascheroni</h2><h2 data-lang="en">Mascheroni</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="odd-circles.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Cerchi insoliti</h2><h2 data-lang="en">Odd circles</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="pigeons.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Piccioni</h2><h2 data-lang="en">Pigeons</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="seasickness.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Mal di mare</h2><h2 data-lang="en">Seasickness</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="spooky-columns.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Colonne inquietanti</h2><h2 data-lang="en">Spooky columns</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="stargate.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Stargate</h2><h2 data-lang="en">Stargate</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-democratic-stone.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La pietra democratica</h2><h2 data-lang="en">The democratic stone</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-first-aerial-bombardment.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il primo bombardamento aereo</h2><h2 data-lang="en">The first aerial bombardment</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-first-woman-graduate.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La prima donna laureata</h2><h2 data-lang="en">The first woman graduate</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-grilles-of-the-new-prisons.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Le grate delle Prigioni Nuove</h2><h2 data-lang="en">The grilles of the new prisons</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-hunchback-of-rialto.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il Gobbo di Rialto</h2><h2 data-lang="en">The hunchback of Rialto</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-largest-canvas-painting.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La tela più grande del mondo</h2><h2 data-lang="en">The largest canvas painting</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-lived-bell-tower.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il campanile abitato</h2><h2 data-lang="en">The lived bell tower</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-lucky-charm-belly.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La pancia portafortuna</h2><h2 data-lang="en">The lucky charm belly</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-lucky-house.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La casa fortunata</h2><h2 data-lang="en">The lucky house</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-magic-courtyard.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La corte magica</h2><h2 data-lang="en">The magic courtyard</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-narrowest-palace.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il palazzo più stretto</h2><h2 data-lang="en">The narrowest palace</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-old-lady-with-the-mortar.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La vecchia col mortaio</h2><h2 data-lang="en">The old lady with the mortar</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-repentant-architect.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">L'architetto pentito</h2><h2 data-lang="en">The repentant architect</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-secret-door.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La porta segreta</h2><h2 data-lang="en">The secret door</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-smallest-church.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La chiesa più piccola</h2><h2 data-lang="en">The smallest church in Venice</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="the-war-of-punches.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La guerra dei pugni</h2><h2 data-lang="en">The war of punches</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="venetian-venus.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Venere Veneziana</h2><h2 data-lang="en">Venetian Venus</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-        <a href="you-mustnt-get-fat.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Vietato ingrassare!</h2><h2 data-lang="en">You mustn't get fat!</h2><span class="btn-link" data-lang="it">Scopri →</span><span class="btn-link" data-lang="en">Discover →</span></a>
-    </main>
+            <a href="buffalo-bill-in-venice.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Buffalo Bill a Venezia</h2><h2 data-lang="en">Buffalo Bill in Venice</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="exemplary-punishment.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Punizione esemplare</h2><h2 data-lang="en">Exemplary punishment</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="first-public-gaming-house.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il primo casinò pubblico</h2><h2 data-lang="en">First public gaming house</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="last-chance.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">L'ultima occasione</h2><h2 data-lang="en">Last chance</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="leaning-bell-towers.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Campanili pendenti</h2><h2 data-lang="en">Leaning bell towers</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="love.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Amore</h2><h2 data-lang="en">Love</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="magic-doors.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Porte magiche</h2><h2 data-lang="en">Magic doors</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="making-a-virtue-of-necessity.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Far di necessità virtù</h2><h2 data-lang="en">Making a virtue of necessity</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="mascheroni.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Mascheroni</h2><h2 data-lang="en">Mascheroni</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="odd-circles.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Cerchi insoliti</h2><h2 data-lang="en">Odd circles</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="pigeons.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Piccioni</h2><h2 data-lang="en">Pigeons</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="seasickness.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Mal di mare</h2><h2 data-lang="en">Seasickness</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="spooky-columns.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Colonne inquietanti</h2><h2 data-lang="en">Spooky columns</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="stargate.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Stargate</h2><h2 data-lang="en">Stargate</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-democratic-stone.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La pietra democratica</h2><h2 data-lang="en">The democratic stone</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-first-aerial-bombardment.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il primo bombardamento aereo</h2><h2 data-lang="en">The first aerial bombardment</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-first-woman-graduate.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La prima donna laureata</h2><h2 data-lang="en">The first woman graduate</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-grilles-of-the-new-prisons.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Le grate delle Prigioni Nuove</h2><h2 data-lang="en">The grilles of the new prisons</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-hunchback-of-rialto.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il Gobbo di Rialto</h2><h2 data-lang="en">The hunchback of Rialto</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-largest-canvas-painting.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La tela più grande del mondo</h2><h2 data-lang="en">The largest canvas painting</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-lived-bell-tower.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il campanile abitato</h2><h2 data-lang="en">The lived bell tower</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-lucky-charm-belly.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La pancia portafortuna</h2><h2 data-lang="en">The lucky charm belly</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-lucky-house.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La casa fortunata</h2><h2 data-lang="en">The lucky house</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-magic-courtyard.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La corte magica</h2><h2 data-lang="en">The magic courtyard</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-narrowest-palace.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Il palazzo più stretto</h2><h2 data-lang="en">The narrowest palace</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-old-lady-with-the-mortar.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La vecchia col mortaio</h2><h2 data-lang="en">The old lady with the mortar</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-repentant-architect.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">L'architetto pentito</h2><h2 data-lang="en">The repentant architect</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-secret-door.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La porta segreta</h2><h2 data-lang="en">The secret door</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-smallest-church.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La chiesa più piccola</h2><h2 data-lang="en">The smallest church</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="the-war-of-punches.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">La guerra dei pugni</h2><h2 data-lang="en">The war of punches</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="venetian-venus.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Venere Veneziana</h2><h2 data-lang="en">Venetian Venus</h2><span class="btn-link">Sblocca →</span></a>
+            <a href="you-mustnt-get-fat.html" class="card locked"><div class="lock-badge">🔒 Premium</div><h2 data-lang="it">Vietato ingrassare!</h2><h2 data-lang="en">You mustn't get fat!</h2><span class="btn-link">Sblocca →</span></a>
+        </main>
+    </div>
 
     <div id="pay-modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2 data-lang="it">Sblocca tutti i segreti</h2>
-            <h2 data-lang="en">Unlock all secrets</h2>
-            <p data-lang="it">Sblocca l'accesso alle 40 storie e alla mappa interattiva.</p>
-            <p data-lang="en">Unlock access to all 40 stories and the interactive map.</p>
-            <a href="IL_TUO_LINK_PAGAMENTO" class="btn-buy">
-                <span data-lang="it">Sblocca tutto - €5.00</span>
-                <span data-lang="en">Unlock all - €5.00</span>
-            </a>
+            <div style="font-size: 3rem; margin-bottom: 20px;">🗝️</div>
+            <h2 data-lang="it">Sblocca tutto</h2>
+            <h2 data-lang="en">Unlock everything</h2>
+            <p data-lang="it">Accedi a tutte le 40 storie e alla mappa interattiva.</p>
+            <p data-lang="en">Access all 40 stories and the interactive map.</p>
+            <a href="IL_TUO_LINK_PAGAMENTO" class="btn-buy">Sblocca ora - €5</a>
         </div>
     </div>
 
@@ -131,7 +263,6 @@
                 modal.style.display = 'flex';
             });
         });
-
         function closeModal() { modal.style.display = 'none'; }
         window.onclick = function(e) { if (e.target == modal) closeModal(); }
     </script>
