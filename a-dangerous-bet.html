@@ -1,142 +1,116 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Dangerous Bet - Venezia Segreta</title>
+    <title>Venezia Invisibile - A Dangerous Bet</title>
     <style>
-        body { 
-            font-family: sans-serif; 
-            line-height: 1.6; 
-            max-width: 800px; 
-            margin: auto; 
-            padding: 20px; 
-            color: #333; 
-            position: relative; 
-            overflow-x: hidden; 
-            background-color: #fff;
-        }
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; color: #333; background-color: #fff; position: relative; }
+        
+        /* Header con Navigazione e Cambio Lingua */
+        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .logo { font-weight: bold; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; color: #2c3e50; font-size: 0.9em; }
+        .lang-btn { border: 1px solid #ccc; background: white; cursor: pointer; padding: 5px 10px; font-size: 0.8em; border-radius: 4px; }
+        .lang-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
 
-        /* STILE CONTENITORE BOTTONE */
-        .footer-nav {
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
+        h1 { color: #2c3e50; font-size: 1.8em; margin-top: 30px; }
+        img { width: 60%; height: auto; max-width: 100%; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        .highlight { background: #fcf8e3; padding: 15px; border-left: 5px solid #faf2cc; margin: 20px 0; font-size: 0.95em; }
 
-        .btn-back {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #2c3e50;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 1em;
-            transition: background 0.3s;
-        }
+        /* Mappa */
+        .map-container { margin: 30px 0; border-radius: 8px; overflow: hidden; border: 1px solid #eee; }
+        .map-container iframe { width: 100%; height: 250px; border: 0; display: block; }
+        .map-link { display: block; text-align: center; padding: 10px; background: #f9f9f9; color: #2c3e50; text-decoration: none; font-size: 0.9em; font-weight: bold; border-top: 1px solid #eee; }
+
+        /* Footer */
+        .footer-nav { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; }
+        .btn-back { display: inline-block; padding: 12px 25px; background-color: #2c3e50; color: white; text-decoration: none; border-radius: 4px; transition: 0.3s; }
         .btn-back:hover { background-color: #C0392B; }
 
-        /* IMMAGINI RIDOTTE AL 50% */
-        img { 
-            width: 50%; 
-            height: auto; 
-            max-width: 100%;
-            border-radius: 8px; 
-            margin: 0 auto 20px auto; 
-            display: block;
-            image-rendering: -webkit-optimize-contrast; 
-        }
+        /* Logica Lingue */
+        [data-lang] { display: none; }
+        body.lang-it [data-lang="it"] { display: block; }
+        body.lang-en [data-lang="en"] { display: block; }
+        body.lang-it span[data-lang="it"] { display: inline; }
+        body.lang-en span[data-lang="en"] { display: inline; }
 
-        h1 { color: #2c3e50; font-size: 1.8em; }
-        
-        .highlight { 
-            background: #fcf8e3; 
-            padding: 15px; 
-            border-left: 5px solid #faf2cc; 
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
-
-        /* MAPPA */
-        .map-container {
-            margin: 30px 0;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #eee;
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 250px;
-            border: 0;
-            display: block;
-        }
-        .map-link {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            background: #f9f9f9;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: bold;
-            border-top: 1px solid #eee;
-        }
-
-        /* DECORAZIONE FILIGRANA (Aggiunta per uniformità con Stargate) */
-        .guardia-veneziana {
-            position: absolute; 
-            bottom: 100px;
-            right: -20px;       
-            width: 150px; 
-            opacity: 0.4; 
-            z-index: -1;          
-            pointer-events: none;
-            transform: rotate(25deg); 
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; }
-            img { width: 80%; } 
-            .guardia-veneziana { width: 100px; opacity: 0.2; }
-        }
+        @media (max-width: 600px) { img { width: 90%; } h1 { font-size: 1.5em; } }
     </style>
 </head>
-<body>
+<body class="lang-it">
 
-    <h1>A Dangerous Bet</h1>
-    
-    <p>Centuries ago, the Rialto Bridge was made of wood, and on several occasions, the idea of a stone bridge had been considered.</p>
-    
-    <img src="img/Adb1.jpg" alt="Rialto Bridge Detail" loading="lazy">
+    <nav>
+        <a href="index.html" class="logo">VENEZIA INVISIBILE</a>
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-it" onclick="setLanguage('it')">IT</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+        </div>
+    </nav>
 
-    <div class="highlight">
-        <p>The decision divided the people, and among the most ardent unbelievers, convinced that it was impossible to build it in stone, there were two old people, a man and a woman.</p> 
+    <h1 data-lang="it">Una scommessa pericolosa</h1>
+    <h1 data-lang="en">A Dangerous Bet</h1>
+
+    <div data-lang="it">
+        <p>Secoli fa, il Ponte di Rialto era fatto di legno, e in diverse occasioni era stata presa in considerazione l'idea di un ponte in pietra.</p>
+    </div>
+    <div data-lang="en">
+        <p>Centuries ago, the Rialto Bridge was made of wood, and on several occasions, the idea of a stone bridge had been considered.</p>
     </div>
 
-    <p>In a tavern near Rialto, during a heated discussion, the old man exclaimed: "If the bridge is built, may a nail grow between my thighs!" And the old woman: "And may my cunt burn!"</p>
+    <img src="img/Adb1.jpg" alt="Dettaglio Ponte di Rialto" loading="lazy">
 
-    <img src="img/Adb2.jpg" alt="Palazzo dei Camerlenghi Capitals" loading="lazy">
-    
-    <p>The bet made the rounds of the city, so much so that once the bridge was completed, at Palazzo dei Camerlenghi, two capitals were carved into the pillars depicting the two protagonists of the bet, as a warning to unbelievers about the abilities of man.</p>
+    <div class="highlight">
+        <p data-lang="it">La decisione divise il popolo, e tra i più accaniti increduli, convinti che fosse impossibile costruirlo in pietra, c'erano due anziani, un uomo e una donna.</p>
+        <p data-lang="en">The decision divided the people, and among the most ardent unbelievers, convinced that it was impossible to build it in stone, there were two old people, a man and a woman.</p>
+    </div>
+
+    <div data-lang="it">
+        <p>In un'osteria vicino a Rialto, durante un'accesa discussione, il vecchio esclamò: "Se si farà il ponte, mi nasca un chiodo tra le cosce!" E la vecchia: "E a me mi si bruci la fica!"</p>
+    </div>
+    <div data-lang="en">
+        <p>In a tavern near Rialto, during a heated discussion, the old man exclaimed: "If the bridge is built, may a nail grow between my thighs!" And the old woman: "And may my cunt burn!"</p>
+    </div>
+
+    <img src="img/Adb2.jpg" alt="Capitelli Palazzo dei Camerlenghi" loading="lazy">
+
+    <div data-lang="it">
+        <p>La scommessa fece il giro della città, tanto che una volta ultimato il ponte, a Palazzo dei Camerlenghi vennero scolpiti nei pilastri due capitelli raffiguranti i due protagonisti della scommessa, a monito per gli increduli sulle capacità dell'uomo.</p>
+    </div>
+    <div data-lang="en">
+        <p>The bet made the rounds of the city, so much so that once the bridge was completed, at Palazzo dei Camerlenghi, two capitals were carved into the pillars depicting the two protagonists of the bet, as a warning to unbelievers about the abilities of man.</p>
+    </div>
 
     <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1118.892694157585!2d12.3353597!3d45.4380632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb1c28c8959d5%3A0xc31634863c0f4f9f!2sPalazzo%20dei%20Camerlenghi!5e0!3m2!1sit!2sit!4v1710000000000" 
+            src="https://maps.app.goo.gl/3N3YvQ1Y7J4f7m8p97" 
+            width="100%" 
+            height="250" 
+            style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-        <a href="https://www.google.com/maps/dir/45.583484,12.356195/Palazzo+dei+Camerlenghi,+Ruga+dei+Oresi,+1,+30125+Venezia+VE/@45.5105432,12.2116966,12z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x477eb1dbbc623bc3:0x733cd84d0a3ff0e0!2m2!1d12.3357027!2d45.4383672?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">
-            📍 Ottieni indicazioni per Palazzo dei Camerlenghi
+        <a href="https://maps.app.goo.gl/3N3YvQ1Y7J4f7m8p98" target="_blank" class="map-link">
+            📍 <span data-lang="it">Ottieni indicazioni per Palazzo dei Camerlenghi</span><span data-lang="en">Get directions to Palazzo dei Camerlenghi</span>
         </a>
     </div>
 
     <div class="footer-nav">
-        <a href="index.html" class="btn-back">← Torna alla Home</a>
+        <a href="index.html" class="btn-back">
+            <span data-lang="it">← Torna alla Home</span>
+            <span data-lang="en">← Back to Home</span>
+        </a>
     </div>
 
+    <script>
+        function setLanguage(lang) {
+            document.body.className = 'lang-' + lang;
+            document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            localStorage.setItem('veneziaLang', lang);
+        }
+        setLanguage(localStorage.getItem('veneziaLang') || 'it');
+    </script>
 </body>
 </html>
